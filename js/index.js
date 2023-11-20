@@ -1,16 +1,34 @@
+const options = {
+  method: "POST",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    //Authorization: `Bearer ${token}`,
+    Authorization: `Bearer 123`,
+  },
+  body: "",
+  /*JSON.stringify({
+    client_id: "(API KEY)",
+    client_secret: "(API SECRET)",
+    grant_type: "client_credentials",
+  }),
+  */
+};
+
 $(document).ready(function () {
   let UserData = fetchData(
     "https://open.tiktokapis.com/v2/user/info/",
+    options,
     queryUserInfoResponse
   );
   UserData.then((res) => renderUserData(res));
 
-  let videoData = fetchData("fake", queryVideosResponse);
+  let videoData = fetchData("fake", options, queryVideosResponse);
   videoData.then((res) => renderVideoData(res));
 });
 
-const fetchData = (url, fakeJson) => {
-  return fetch(url)
+const fetchData = (url, options, fakeJson) => {
+  return fetch(url, options)
     .then((res) => res.json)
     .then(() => fakeJson);
 };
