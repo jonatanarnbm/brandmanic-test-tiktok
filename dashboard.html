@@ -1,50 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <!--    <link rel="stylesheet" href="/css/style.css" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <style>
-      * {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <!--    <link rel="stylesheet" href="/css/style.css" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in</title>
 
-  <body>
-    <header>
-      <nav
-        style="
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav style="
           display: flex;
           align-items: center;
           justify-content: space-evenly;
-        "
-      >
-        <a href="/index.html"
-          ><img
-            style="width: 2rem"
-            src="https://cdn-icons-png.flaticon.com/512/2343/2343970.png"
-            alt="Icono"
-        /></a>
+        ">
+      <a href="/index.html"><img style="width: 2rem" src="https://cdn-icons-png.flaticon.com/512/2343/2343970.png"
+          alt="Icono" /></a>
 
-        <div class="nav__login" style="display: flex; gap: 2rem">
-          <a href="/dashboard.html" style="color: black">Dashboard</a>
-          <a href="/index.html" style="color: black">Log in</a>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <div
-        class="contenido"
-        style="
+      <div class="nav__login" style="display: flex; gap: 2rem">
+        <a href="/dashboard.html" style="color: black">Dashboard</a>
+        <a href="/index.html" style="color: black">Log in</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="contenido" style="
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -52,26 +42,18 @@
           padding: 1rem;
           background-color: white;
           gap: 3rem;
-        "
-      >
-        <div
-          class="contenido__boton"
-          style="
+        ">
+      <div class="contenido__boton" style="
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-          "
-        >
-          <img
-            id="dev_image"
-            src="https://sf16-muse-va.ibytedtos.com/obj/tiktok-open-platform/ttop_doc_images/66e0a0d14830c5cac14269acc0981348"
-            alt="tiktok dev"
-            style="margin: 1rem; max-width: 30rem"
-          />
-          <a
-            style="
+          ">
+        <img id="dev_image"
+          src="https://sf16-muse-va.ibytedtos.com/obj/tiktok-open-platform/ttop_doc_images/66e0a0d14830c5cac14269acc0981348"
+          alt="tiktok dev" style="margin: 1rem; max-width: 30rem" />
+        <a style="
               font-size: 1.3rem;
               min-width: 12rem;
               background-color: #000000;
@@ -83,224 +65,210 @@
               text-decoration: none;
               font-weight: bold;
               font-size: 1.4rem;
-            "
-            id="tiktokButton"
-            href="#"
-            >Continue with TikTok</a
-          >
-        </div>
-        <div
-          class="contenido__api"
-          style="
+            " id="tiktokButton" href="#">Continue with TikTok</a>
+      </div>
+      <div class="contenido__api" style="
             display: flex;
             align-items: center;
             flex-direction: column;
             gap: 2rem;
-          "
-        >
-          <table id="contenido__api--tablaUserInfo">
-            <caption>
-              GET USER INFO
-            </caption>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th
-                style="background-color: #000000; color: white; padding: 0.5rem"
-              >
-                Field
-              </th>
-              <th
-                style="background-color: #000000; color: white; padding: 0.5rem"
-              >
-                Data
-              </th>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">open_id:</th>
-              <td
-                id="open_id--data"
-                style="
+          ">
+        <table id="contenido__api--tablaUserInfo">
+          <caption>
+            GET USER INFO
+          </caption>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              Field
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              Data
+            </th>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">open_id:</th>
+            <td id="open_id--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                union_id:
-              </th>
-              <td
-                id="union_id--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              union_id:
+            </th>
+            <td id="union_id--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                avatar_url:
-              </th>
-              <td
-                id="avatar_url--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              avatar_url:
+            </th>
+            <td id="avatar_url--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                avatar_url100:
-              </th>
-              <td
-                id="avatar_url100--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              avatar_url100:
+            </th>
+            <td id="avatar_url100--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                avatar_large_url:
-              </th>
-              <td
-                id="avatar_large_url--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              avatar_large_url:
+            </th>
+            <td id="avatar_large_url--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                display_name:
-              </th>
-              <td
-                id="display_name--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              display_name:
+            </th>
+            <td id="display_name--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                bio_description:
-              </th>
-              <td
-                id="bio_description--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              bio_description:
+            </th>
+            <td id="bio_description--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                profile_deep_link:
-              </th>
-              <td
-                id="profile_deep_link--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              profile_deep_link:
+            </th>
+            <td id="profile_deep_link--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                is_verified:
-              </th>
-              <td
-                id="is_verified--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              is_verified:
+            </th>
+            <td id="is_verified--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                follower_count:
-              </th>
-              <td
-                id="follower_count--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              follower_count:
+            </th>
+            <td id="follower_count--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                following_count:
-              </th>
-              <td
-                id="following_count--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              following_count:
+            </th>
+            <td id="following_count--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                likes_count:
-              </th>
-              <td
-                id="likes_count--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              likes_count:
+            </th>
+            <td id="likes_count--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th style="border: 1px solid black; padding: 0.5rem">
-                video_count:
-              </th>
-              <td
-                id="video_count--data"
-                style="
+                "></td>
+          </tr>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="border: 1px solid black; padding: 0.5rem">
+              video_count:
+            </th>
+            <td id="video_count--data" style="
                   max-width: 23rem;
                   border: 1px solid black;
                   padding: 0.5rem;
-                "
-              ></td>
-            </tr>
-          </table>
-          <table id="contenido__api--tablaVideos">
-            <caption>
-              QUERY VIDEOS
-            </caption>
-            <tr style="border: 1px solid black; padding: 0.5rem">
-              <th
-                style="background-color: #000000; color: white; padding: 0.5rem"
-              >
-                Id
-              </th>
-              <th
-                style="background-color: #000000; color: white; padding: 0.5rem"
-              >
-                Video
-              </th>
-            </tr>
-          </table>
-        </div>
+                "></td>
+          </tr>
+        </table>
+        <table id="contenido__api--tablaVideos">
+          <caption>
+            QUERY VIDEOS
+          </caption>
+          <tr style="border: 1px solid black; padding: 0.5rem">
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              Id
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              create_time
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              cover_image_url
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              share_url
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              video_description
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              duration
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              height
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              width
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              title
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              embed_html
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              embed_link
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              like_count
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              comment_count
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              share_count
+            </th>
+            <th style="background-color: #000000; color: white; padding: 0.5rem">
+              view_count
+            </th>
+          </tr>
+        </table>
       </div>
-    </main>
-  </body>
+    </div>
+  </main>
+</body>
+
 </html>

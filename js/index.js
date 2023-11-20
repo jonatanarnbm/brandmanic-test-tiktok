@@ -54,8 +54,21 @@ const renderVideoData = (json) => {
   for (const video of json.data.videos) {
     let html = `
       <tr style="border: 1px solid black;padding: .5rem;">
-            <td style="border: 1px solid black;padding: .5rem;">${video.id}</td>
-            <td id="open_id--data" style="max-width: 23rem;border: 1px solid black;padding: .5rem;">${video.title}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.id}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.create_time}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.cover_image_url}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.share_url}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.video_description}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.duration}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.height}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.width}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.title}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.embed_html}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.embed_link}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.like_count}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.comment_count}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.share_count}</td>
+            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.view_count}</td>
       </tr>
     `;
     tablaVideos.append(html);
