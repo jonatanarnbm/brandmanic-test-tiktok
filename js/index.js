@@ -23,18 +23,36 @@ $(document).ready(function () {
   );
   UserData.then((res) => renderUserData(res));
 
-  let videoData = fetchData("fake", options, queryVideosResponse);
-  videoData.then((res) => renderVideoData(res));
 
   /* ListVideos */
-  var maxVideos =
-    $("#listVideos__input").on('click', () => {
-      maxVideos = $("#listVideos__input").val();
-      $("#listVideos__numero").text(maxVideos)
-    })
-  /* VideoIDS */
+  var maxVideos = 10;
 
+  $("#idsVideos__boton--buscar").on('click', () => {
+    let videoData = fetchData(
+      "https://open.tiktokapis.com/v2/video/list/",
+      options,
+      queryVideosResponse);
+    videoData.then((res) => renderVideoData(res));
+  })
+
+
+  $("#listVideos__input").on('click', () => {
+    maxVideos = $("#listVideos__input").val();
+    $("#listVideos__numero").text(maxVideos)
+  })
+
+
+  /* Query Videos */
   var videosIDS = [];
+
+  $("#listVideos__boton--buscar").on('click', () => {
+    let videoData = fetchData(
+      "https://open.tiktokapis.com/v2/video/query/",
+      options,
+      queryVideosResponse);
+    videoData.then((res) => renderVideoData(res));
+  })
+
   $("#idsVideos__boton--anyadir").on('click', () => {
     if (videosIDS.indexOf($("#idsVideos__input").val()) == -1 && $("#idsVideos__input").val().trim() != '') {
       videosIDS.push($("#idsVideos__input").val())
@@ -53,8 +71,6 @@ $(document).ready(function () {
     $('#idsVideos__list').empty()
     videosIDS.map((e) => $('#idsVideos__list').append(`<li>${e}.</span>`))
   }
-
-
 
 });
 
@@ -85,11 +101,26 @@ const renderUserData = (json) => {
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
   for (const video of json.data.videos) {
-    let tr = $('<tr style="border: 1px solid black;padding: .5rem;"></tr>')
-    Object.values(video).map((attr) => {
-      tr.append(`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${attr}</td>`)
-    })
-    tablaVideos.append(tr);
+    let html = `
+      <tr style="border: 1px solid black;padding: .5rem;">
+            ${video.id?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.id}</td>`:$('#tablaVideos__th--id').remove()}
+            ${video.create_time?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.create_time}</td>`:$('#tablaVideos__th--create_time').remove()}
+            ${video.cover_image_url?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.cover_image_url}</td>`:$('#tablaVideos__th--cover_image_url').remove()}
+            ${video.share_url?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.share_url}</td>`:$('#tablaVideos__th--share_url').remove()}
+            ${video.video_description?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.video_description}</td>`:$('#tablaVideos__th--video_description').remove()}
+            ${video.duration?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.duration}</td>`:$('#tablaVideos__th--duration').remove()}
+            ${video.height?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.height}</td>`:$('#tablaVideos__th--height').remove()}
+            ${video.width?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.width}</td>`:$('#tablaVideos__th--width').remove()}
+            ${video.title?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.title}</td>`:$('#tablaVideos__th--title').remove()}
+            ${video.embed_html?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.embed_html}</td>`:$('#tablaVideos__th--embed_html').remove()}
+            ${video.embed_link?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.embed_link}</td>`:$('#tablaVideos__th--embed_link').remove()}
+            ${video.like_count?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.like_count}</td>`:$('#tablaVideos__th--like_count').remove()}
+            ${video.comment_count?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.comment_count}</td>`:$('#tablaVideos__th--comment_count').remove()}
+            ${video.share_count?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.share_count}</td>`:$('#tablaVideos__th--share_count').remove()}
+            ${video.view_count?`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.view_count}</td>`:$('#tablaVideos__th--view_count').remove()}
+      </tr>
+    `;
+    tablaVideos.append(html);
   }
 };
 

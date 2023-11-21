@@ -219,7 +219,7 @@
           <div class="busquedasDisplayAPI__queryVideos"
             style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
             <div class="idsVideos"
-              style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;">
+              style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
               <span style="height: 2rem;font-size: 2rem;font-weight: 600;">QUERY VIDEOS</span>
               <div style="display: flex;gap:2rem;">
                 <button id="idsVideos__boton--limpiar">Limpiar</button>
@@ -239,16 +239,16 @@
           <div class="busquedasDisplayAPI__queryListVideos"
             style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
             <div class="idsVideos"
-              style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;">
+              style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
               <span style="height: 2rem;font-size: 2rem;font-weight: 600;">LIST VIDEOS</span>
               <div style="display: flex; align-items: center;justify-content: center;height: 1rem;">
-                <span id="listVideos__numero" style="min-height:1rem;min-width: 1.5rem;margin-top:.3rem"></span>
+                <span id="listVideos__numero" style="min-height:1rem;min-width: 1.5rem;margin-top:.3rem">10</span>
                 <div>
                   <label for="listVideos__label">Videos: </label><input type="range" min="0" max="20"
                     name="listVideos__input" id="listVideos__input">
                 </div>
               </div>
-              <button id="idsVideos__boton--buscar">Buscar</button>
+              <button id="listVideos__boton--buscar">Buscar</button>
             </div>
           </div>
         </div>
@@ -256,49 +256,49 @@
           <span style="font-size: 1.6rem;font-weight: 400; align-self: flex-start;">Videos:</span>
 
           <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
-              Id
+            <th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">
+              id
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--create_time" style="background-color: #000000; color: white; padding: 0.5rem">
               create_time
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--cover_image_url" style="background-color: #000000; color: white; padding: 0.5rem">
               cover_image_url
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--share_url" style="background-color: #000000; color: white; padding: 0.5rem">
               share_url
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--video_description" style="background-color: #000000; color: white; padding: 0.5rem">
               video_description
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--duration" style="background-color: #000000; color: white; padding: 0.5rem">
               duration
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--height" style="background-color: #000000; color: white; padding: 0.5rem">
               height
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--width" style="background-color: #000000; color: white; padding: 0.5rem">
               width
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--title" style="background-color: #000000; color: white; padding: 0.5rem">
               title
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--embed_html" style="background-color: #000000; color: white; padding: 0.5rem">
               embed_html
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--embed_link" style="background-color: #000000; color: white; padding: 0.5rem">
               embed_link
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--like_count" style="background-color: #000000; color: white; padding: 0.5rem">
               like_count
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--comment_count" style="background-color: #000000; color: white; padding: 0.5rem">
               comment_count
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--share_count" style="background-color: #000000; color: white; padding: 0.5rem">
               share_count
             </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
+            <th id="tablaVideos__th--view_count" style="background-color: #000000; color: white; padding: 0.5rem">
               view_count
             </th>
           </tr>
