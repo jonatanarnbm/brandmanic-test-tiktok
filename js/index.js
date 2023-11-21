@@ -25,6 +25,37 @@ $(document).ready(function () {
 
   let videoData = fetchData("fake", options, queryVideosResponse);
   videoData.then((res) => renderVideoData(res));
+
+  /* ListVideos */
+  var maxVideos =
+    $("#listVideos__input").on('click', () => {
+      maxVideos = $("#listVideos__input").val();
+      $("#listVideos__numero").text(maxVideos)
+    })
+  /* VideoIDS */
+
+  var videosIDS = [];
+  $("#idsVideos__boton--anyadir").on('click', () => {
+    if (videosIDS.indexOf($("#idsVideos__input").val()) == -1 && $("#idsVideos__input").val().trim() != '') {
+      videosIDS.push($("#idsVideos__input").val())
+      pintaIds(videosIDS)
+      $("#idsVideos__input").val('')
+    }
+  })
+
+  $("#idsVideos__boton--limpiar").on('click', () => {
+    videosIDS = [];
+    $('#idsVideos__list').empty()
+    $("#idsVideos__input").val('')
+  })
+
+  const pintaIds = (videosIDS) => {
+    $('#idsVideos__list').empty()
+    videosIDS.map((e) => $('#idsVideos__list').append(`<li>${e}.</span>`))
+  }
+
+
+
 });
 
 const fetchData = (url, options, fakeJson) => {
@@ -32,6 +63,8 @@ const fetchData = (url, options, fakeJson) => {
     .then((res) => res.json)
     .then(() => fakeJson);
 };
+
+
 
 const renderUserData = (json) => {
   $("#open_id--data").text(json["open_id"]);
@@ -52,26 +85,11 @@ const renderUserData = (json) => {
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
   for (const video of json.data.videos) {
-    let html = `
-      <tr style="border: 1px solid black;padding: .5rem;">
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.id}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.create_time}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.cover_image_url}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.share_url}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.video_description}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.duration}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.height}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.width}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.title}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.embed_html}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.embed_link}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.like_count}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.comment_count}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.share_count}</td>
-            <td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${video.view_count}</td>
-      </tr>
-    `;
-    tablaVideos.append(html);
+    let tr = $('<tr style="border: 1px solid black;padding: .5rem;"></tr>')
+    Object.values(video).map((attr) => {
+      tr.append(`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden">${attr}</td>`)
+    })
+    tablaVideos.append(tr);
   }
 };
 
@@ -94,12 +112,38 @@ const queryVideosResponse = {
   data: {
     videos: [
       {
-        title: "Video 1",
-        id: "1234123412345678567",
+        id: "1525212512552215125152125",
+        create_time: "2020102131-123030",
+        cover_image_url: "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        share_url: "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        video_description: "Lorem fistrum ese pedazo de está la cosa muy malar a gramenawer a gramenawer va usté muy cargadoo al ataquerl ese pedazo de mamaar por la gloria de mi madre ese hombree.",
+        duration: "1234123412345678567",
+        height: "1920",
+        width: "1080",
+        title: "De fiesta con Toñito 🥵🥵",
+        embed_html: "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798/",
+        embed_link: "https://www.tiktok.com/127892171937912378192387219872/19781237892138/71923782198719821798/",
+        like_count: "1234123412345678567",
+        commnent_count: "515421",
+        share_count: "835",
+        view_count: '6121341'
       },
       {
-        title: "Video 2",
-        id: "1010102020203030303",
+        id: "1525212512552215125152125",
+        create_time: "2020102131-123030",
+        cover_image_url: "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        share_url: "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        video_description: "Lorem fistrum ese pedazo de está la cosa muy malar a gramenawer a gramenawer va usté muy cargadoo al ataquerl ese pedazo de mamaar por la gloria de mi madre ese hombree.",
+        duration: "1234123412345678567",
+        height: "1920",
+        width: "1080",
+        title: "De fiesta con Toñito 🥵🥵",
+        embed_html: "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798/",
+        embed_link: "https://www.tiktok.com/127892171937912378192387219872/19781237892138/71923782198719821798/",
+        like_count: "1234123412345678567",
+        commnent_count: "515421",
+        share_count: "835",
+        view_count: '6121341'
       },
     ],
   },
@@ -109,3 +153,5 @@ const queryVideosResponse = {
     log_id: "20220829194722CBE87ED59D524E727021",
   },
 };
+
+
