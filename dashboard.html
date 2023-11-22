@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
   <!--    <link rel="stylesheet" href="/css/style.css" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Log in</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/fakedata.js"></script>
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -308,6 +319,28 @@
               </div>
             </div>
           </div>
+                "
+              ></td>
+            </tr>
+          </table>
+          <table id="contenido__api--tablaVideos">
+            <caption>
+              QUERY VIDEOS
+            </caption>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                Id
+              </th>
+              <th
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                Video
+              </th>
+            </tr>
+          </table>
+          
         </div>
         <table id="contenido__api--tablaVideos">
           <span style="font-size: 1.6rem;font-weight: 400; align-self: flex-start;">Videos:</span>
@@ -364,6 +397,33 @@
       </div>
     </div>
     <hr style="width: 90%;">
+    <div>
+      <table id="contenido__api--tablaAds">
+            <caption>
+              QUERY ADS
+            </caption>
+          </table>
+          <table id="contenido__api--tablaAdvertisers">
+            <caption>
+              QUERY ADVERTISERS
+            </caption>
+          </table>
+          <table id="contenido__api--tablaAdDetails">
+            <caption>
+              QUERY AD DETAILS
+            </caption>
+          </table>
+          <table id="contenido__api--tablaAdReport">
+            <caption>
+              QUERY AD REPORT
+            </caption>
+          </table>
+          <table id="contenido__api--tablaCommercialContent">
+            <caption>
+              QUERY Commercial Content
+            </caption>
+          </table>
+    </div>
   </main>
 </body>
 
