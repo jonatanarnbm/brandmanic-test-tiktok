@@ -25,12 +25,85 @@ const options = {
 };
 
 $(document).ready(function () {
+  var fieldsSelected = [];
+
   let UserData = fetchData(
     "https://open.tiktokapis.com/v2/user/info/",
     options,
     queryUserInfoResponse
   );
   UserData.then((res) => renderUserData(res));
+
+  /* ListVideos */
+  var maxVideos = 10;
+
+  $("#idsVideos__boton--buscar").on("click", () => {
+    fieldsSelected = $(".field__checkbox")
+      .map(function () {
+        if (this.checked) {
+          return this.name;
+        }
+      })
+      .get();
+
+    let videoData = fetchData(
+      `https://open.tiktokapis.com/v2/video/list/?fields=${fieldsSelected.join(
+        ","
+      )}`,
+      options,
+      queryVideosResponse
+    );
+    videoData.then((res) => renderVideoData(res));
+  });
+
+  $("#listVideos__input").on("click", () => {
+    maxVideos = $("#listVideos__input").val();
+    $("#listVideos__numero").text(maxVideos);
+  });
+
+  /* Query Videos */
+  var videosIDS = [];
+
+  $("#listVideos__boton--buscar").on("click", () => {
+    fieldsSelected = $(".field__checkbox")
+      .map(function () {
+        if (this.checked) {
+          return this.name;
+        }
+      })
+      .get();
+
+    let videoData = fetchData(
+      `https://open.tiktokapis.com/v2/video/query/?fields=${fieldsSelected.join(
+        ","
+      )}`,
+      options,
+      queryVideosResponse
+    );
+    videoData.then((res) => renderVideoData(res));
+  });
+
+  $("#idsVideos__boton--anyadir").on("click", () => {
+    if (
+      videosIDS.indexOf($("#idsVideos__input").val()) == -1 &&
+      $("#idsVideos__input").val().trim() != ""
+    ) {
+      videosIDS.push($("#idsVideos__input").val());
+      pintaIds(videosIDS);
+      $("#idsVideos__input").val("");
+    }
+  });
+
+  $("#idsVideos__boton--limpiar").on("click", () => {
+    videosIDS = [];
+    $("#idsVideos__list").empty();
+    $("#idsVideos__input").val("");
+  });
+
+  const pintaIds = (videosIDS) => {
+    $("#idsVideos__list").empty();
+    videosIDS.map((e) => $("#idsVideos__list").append(`<li>${e}.</span>`));
+  };
 
   let videoData = fetchData("fake", options, queryVideosResponse);
   videoData.then((res) => renderVideoData(res));
