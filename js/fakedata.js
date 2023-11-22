@@ -17,12 +17,48 @@ export const queryVideosResponse = {
   data: {
     videos: [
       {
-        title: "Video 1",
-        id: "1234123412345678567",
+        id: "1525212512552215125152125",
+        create_time: "2020102131-123030",
+        cover_image_url:
+          "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        share_url:
+          "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        video_description:
+          "Lorem fistrum ese pedazo de está la cosa muy malar a gramenawer a gramenawer va usté muy cargadoo al ataquerl ese pedazo de mamaar por la gloria de mi madre ese hombree.",
+        duration: "1234123412345678567",
+        height: "1920",
+        width: "1080",
+        title: "De fiesta con Toñito 🥵🥵",
+        embed_html:
+          "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798/",
+        embed_link:
+          "https://www.tiktok.com/127892171937912378192387219872/19781237892138/71923782198719821798/",
+        like_count: "1234123412345678567",
+        commnent_count: "515421",
+        share_count: "835",
+        view_count: "6121341",
       },
       {
-        title: "Video 2",
-        id: "1010102020203030303",
+        id: "1525212512552215125152125",
+        create_time: "2020102131-123030",
+        cover_image_url:
+          "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        share_url:
+          "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798",
+        video_description:
+          "Lorem fistrum ese pedazo de está la cosa muy malar a gramenawer a gramenawer va usté muy cargadoo al ataquerl ese pedazo de mamaar por la gloria de mi madre ese hombree.",
+        duration: "1234123412345678567",
+        height: "1920",
+        width: "1080",
+        title: "De fiesta con Toñito 🥵🥵",
+        embed_html:
+          "https://www.tiktok.com/1278921719379123781923872198721/97812378921387/1923782198719821798/",
+        embed_link:
+          "https://www.tiktok.com/127892171937912378192387219872/19781237892138/71923782198719821798/",
+        like_count: "1234123412345678567",
+        commnent_count: "515421",
+        share_count: "835",
+        view_count: "6121341",
       },
     ],
   },
@@ -32,7 +68,6 @@ export const queryVideosResponse = {
     log_id: "20220829194722CBE87ED59D524E727021",
   },
 };
-
 export const queryAdsResponse = {
   data: {
     ads: [
