@@ -67,6 +67,7 @@
               font-size: 1.4rem;
             " id="tiktokButton" href="#">Continue with TikTok</a>
       </div>
+      <hr style="width: 90%;">
       <div class="contenido__api" style="
             display: flex;
             align-items: center;
@@ -74,7 +75,9 @@
             gap: 2rem;
           ">
         <table id="contenido__api--tablaUserInfo" style="width: 100%;">
-          <span style="height: 2rem;font-size: 2rem;font-weight: 600;">GET USER INFO</span>
+          <span style="height: 2rem;font-size: 2.5rem;font-weight: 600;">Display API</span>
+
+          <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;">GET USER INFO</span>
 
           <tr style="border: 1px solid black; padding: 0.5rem">
             <th style="background-color: #000000; color: white; padding: 0.5rem">
@@ -255,7 +258,7 @@
             style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
             <div
               style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
-              <span style="height: 2rem;font-size: 2rem;font-weight: 600;">Fields</span>
+              <span style="height: 2rem;font-size: 2rem;font-weight: 400;">Fields</span>
               <div style="display: flex; align-items: center;justify-content: center;gap: 3rem;">
                 <div>
                   <div><input checked class="field__checkbox" type="checkbox" name="id" id="fields_field--id"><label
@@ -367,30 +370,37 @@
       </div>
     </div>
     <hr style="width: 90%;">
-    <div>
+    <div style="display: flex;flex-direction: column; align-items: center;justify-content: center;max-width: 100%; gap: 2rem;">
+      <span style="height: 2rem;font-size: 2.5rem;font-weight: 600;">Commercial Content API</span>
+
       <table id="contenido__api--tablaAds">
             <caption>
-              QUERY ADS
+              <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY ADS</span>
+
             </caption>
           </table>
           <table id="contenido__api--tablaAdvertisers">
             <caption>
-              QUERY ADVERTISERS
+              <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY ADVERTISERS</span>
+
             </caption>
           </table>
-          <table id="contenido__api--tablaAdDetails">
+          <table id="contenido__api--tablaAdDetails" style="align-self: flex-start;">
             <caption>
-              QUERY AD DETAILS
+              <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY AD DETAILS</span>
+
             </caption>
           </table>
           <table id="contenido__api--tablaAdReport">
             <caption>
-              QUERY AD REPORT
+              <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY AD REPORT</span>
+
             </caption>
           </table>
           <table id="contenido__api--tablaCommercialContent">
             <caption>
-              QUERY Commercial Content
+              <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY Content</span>
+
             </caption>
           </table>
     </div>
