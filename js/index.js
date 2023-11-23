@@ -26,7 +26,21 @@ const options = {
 
 $(document).ready(function () {
   var fieldsSelected = [];
-
+  const fields = [
+    "ad.id",
+    "ad.first_shown_date",
+    "ad.last_shown_date",
+    "ad.status",
+    "ad.status_statement",
+    "ad.videos",
+    "ad.image_urls",
+    "ad.reach",
+    "advertiser.business_id",
+    "advertiser.business_name",
+    "advertiser.paid_for_by",
+  ];
+  createFieldsCheckbox(fields, "ads");
+  createFieldsRange(50, "ads");
   let UserData = fetchData(
     "https://open.tiktokapis.com/v2/user/info/",
     options,
@@ -458,3 +472,28 @@ const renderCommercialContentData = (json) => {
   $("#contenido__api--tablaCommercialContent").append(th);
   $("#contenido__api--tablaCommercialContent").append(td);
 };
+
+function createFieldsCheckbox(fields, query) {
+  let select = `<div style="display:flex;flex-direction:column"><label for="${query}">Fields:</label>
+<select id="${query}" name="${query}" multiple>`;
+  for (let field of fields) {
+    select += `<option  value="${field}">${field}</option>`;
+  }
+  select += `</select></div>`;
+  $(`#fields_${query}Container`).append(select);
+  $(`#${query}`).select2();
+}
+
+function createFieldsRange(max, query) {
+  let range = ` <div style="display: flex; flex-direction: column">
+                  <label for="${query}_max_count">max_count: </label
+                  ><input
+                    type="range"
+                    min="0"
+                    max="${max}"
+                    name="${query}_max_count"
+                    id="${query}_max_count"
+                  />
+                </div> `;
+  $(`#fields_${query}Container`).append(range);
+}
