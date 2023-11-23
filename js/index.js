@@ -25,41 +25,66 @@ const options = {
 };
 
 var getFieldsClass = (clase) => {
-  return $(clase).map(function () {
-    if (this.checked) {
-      return this.name;
-    }
-  })
+  return $(clase)
+    .map(function () {
+      if (this.checked) {
+        return this.name;
+      }
+    })
     .get();
-}
+};
 
 export function redirectToTikTok() {
   // Simula una solicitud al servidor cuando se hace clic en el botón
-  fetch('https://cuddly-meme-5ggvgvvqrx642vr9j-5500.app.github.dev/oauth')  // La ruta debe coincidir con tu ruta existente en el servidor
-    .then(response => {
+  fetch("https://cuddly-meme-5ggvgvvqrx642vr9j-5500.app.github.dev/oauth") // La ruta debe coincidir con tu ruta existente en el servidor
+    .then((response) => {
       if (response.ok) {
         // Redirige al usuario a la URL generada por el servidor
         return response.text();
       } else {
-        throw new Error('Error al iniciar sesión con TikTok');
+        throw new Error("Error al iniciar sesión con TikTok");
       }
     })
-    .then(url => {
+    .then((url) => {
       window.location.href = url;
     })
-    .catch(error => {
+    .catch((error) => {
       console.error(error);
       // Maneja el error según sea necesario
     });
 }
 
 $(document).ready(function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get("code");
+  console.log(code);
   var fieldsSelected = [];
 
+  const fields = [
+    "ad.id",
+    "ad.first_shown_date",
+    "ad.last_shown_date",
+    "ad.status",
+    "ad.status_statement",
+    "ad.videos",
+    "ad.image_urls",
+    "ad.reach",
+    "advertiser.business_id",
+    "advertiser.business_name",
+    "advertiser.paid_for_by",
+  ];
+  createFieldsCheckbox(fields, "ads");
+  createFieldsRange(50, "ads");
+  let UserData = fetchData(
+    "https://open.tiktokapis.com/v2/user/info/",
+    options,
+    queryUserInfoResponse
+  );
+  UserData.then((res) => renderUserData(res));
 
   /* Query User Info - Display API */
   $("#queryUser__boton--buscar").on("click", () => {
-    fieldsSelected = getFieldsClass('.fieldUser__checkbox')
+    fieldsSelected = getFieldsClass(".fieldUser__checkbox");
 
     let UserData = fetchData(
       `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
@@ -71,17 +96,17 @@ $(document).ready(function () {
     UserData.then((res) => renderUserData(res));
   });
 
-  $('#iniTikTok').on('click', redirectToTikTok);
+  $("#iniTikTok").on("click", redirectToTikTok);
 
   /* Query User Info - Research API */
   $("#queryUserR__boton--buscar").on("click", () => {
-    let usernameQueryUserInfoResearch = $('#queryUserR__input').val().trim()
+    let usernameQueryUserInfoResearch = $("#queryUserR__input").val().trim();
 
-    if (usernameQueryUserInfoResearch == '') return
+    if (usernameQueryUserInfoResearch == "") return;
 
-    fieldsSelected = getFieldsClass('.fieldUser__checkbox')
+    fieldsSelected = getFieldsClass(".fieldUser__checkbox");
 
-    alert(usernameQueryUserInfoResearch)
+    alert(usernameQueryUserInfoResearch);
 
     let UserData = fetchData(
       `https://open.tiktokapis.com/v2/research/user/info/?fields=${fieldsSelected.join(
@@ -93,17 +118,15 @@ $(document).ready(function () {
     UserData.then((res) => renderUserData(res));
   });
 
-
-
   /* Query Videos - Display API */
   var videosIDS = [];
 
   $("#queryVideos__boton--buscar").on("click", () => {
-    if (videosIDS.length == []) return
+    if (videosIDS.length == []) return;
 
-    fieldsSelected = getFieldsClass('.fieldVideo__checkbox')
+    fieldsSelected = getFieldsClass(".fieldVideo__checkbox");
 
-    alert('Videos: ' + videosIDS)
+    alert("Videos: " + videosIDS);
 
     let videoData = fetchData(
       `https://open.tiktokapis.com/v2/video/query/?fields=${fieldsSelected.join(
@@ -140,12 +163,22 @@ $(document).ready(function () {
   /* Query Videos - Research API */
 
   $("#queryVideosR__boton--buscar").on("click", () => {
-    var queryQueryVideosResearch = $('#queryVideosR__input--query').val().trim()
-    var start_dateQueryVideosResearch = $('#queryVideosR__input--start_date').val()
-    var max_countQueryVideosResearch = $('#queryVideosR__input--max_count').val()
-    var cursorQueryVideosResearch = $('#queryVideosR__input--cursor').val()
-    var search_idQueryVideosResearch = $('#queryVideosR__input--search_id').val()
-    var is_randomQueryVideosResearch = $('#queryVideosR__input--is_random').is(':checked')
+    var queryQueryVideosResearch = $("#queryVideosR__input--query")
+      .val()
+      .trim();
+    var start_dateQueryVideosResearch = $(
+      "#queryVideosR__input--start_date"
+    ).val();
+    var max_countQueryVideosResearch = $(
+      "#queryVideosR__input--max_count"
+    ).val();
+    var cursorQueryVideosResearch = $("#queryVideosR__input--cursor").val();
+    var search_idQueryVideosResearch = $(
+      "#queryVideosR__input--search_id"
+    ).val();
+    var is_randomQueryVideosResearch = $("#queryVideosR__input--is_random").is(
+      ":checked"
+    );
 
     alert(`
       queryQueryVideosResearch: ${queryQueryVideosResearch}
@@ -154,8 +187,7 @@ $(document).ready(function () {
       cursorQueryVideosResearch: ${cursorQueryVideosResearch}
       search_idQueryVideosResearch: ${search_idQueryVideosResearch}
       is_randomQueryVideosResearch: ${is_randomQueryVideosResearch}
-    `)
-
+    `);
 
     let videoData = fetchData(
       `https://open.tiktokapis.com/v2/research/video/query/?fields=${fieldsSelected.join(
@@ -167,15 +199,13 @@ $(document).ready(function () {
     videoData.then((res) => renderVideoData(res));
   });
 
-
-
   /* ListVideos - Display API */
   var maxVideos = 10;
-  var cursorValue = 0
+  var cursorValue = 0;
   $("#listVideos__boton--buscar").on("click", () => {
-    cursorValue = $('#listVideos__input--cursor').val()
+    cursorValue = $("#listVideos__input--cursor").val();
 
-    alert('Videos: ' + maxVideos + '. Cursor: ' + cursorValue)
+    alert("Videos: " + maxVideos + ". Cursor: " + cursorValue);
 
     let videoData = fetchData(
       `https://open.tiktokapis.com/v2/video/list/?fields=${fieldsSelected.join(
@@ -195,15 +225,19 @@ $(document).ready(function () {
   /* Query Videos Comments - Research API */
 
   $("#queryVideoComments__boton--buscar").on("click", () => {
-    var idQueryVideoComments = $('#queryVideoComments__input--id').val().trim()
-    var max_countQueryVideoComments = $('#queryVideoComments__input--max_count').val()
-    var cursorQueryVideoComments = $('#queryVideoComments__input--cursor').val()
+    var idQueryVideoComments = $("#queryVideoComments__input--id").val().trim();
+    var max_countQueryVideoComments = $(
+      "#queryVideoComments__input--max_count"
+    ).val();
+    var cursorQueryVideoComments = $(
+      "#queryVideoComments__input--cursor"
+    ).val();
 
     alert(`
       idQueryVideoComments: ${idQueryVideoComments} 
       max_countQueryVideoComments: ${max_countQueryVideoComments} 
       cursorQueryVideoComments: ${cursorQueryVideoComments} 
-      `)
+      `);
 
     let videoData = fetchData(
       `https://open.tiktokapis.com/v2/research/video/comment/list/?fields=${fieldsSelected.join(
@@ -214,7 +248,6 @@ $(document).ready(function () {
     );
     videoData.then((res) => renderVideoData(res));
   });
-
 
   //https://open.tiktokapis.com/v2/research/adlib/ad/query/
   let adData = fetchData("", options, queryAdsResponse);
@@ -264,22 +297,29 @@ const renderUserData = (json) => {
 };
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
-  tablaVideos.children().remove()
+  tablaVideos.children().remove();
 
   var primera = true;
 
   for (const video of json.data.videos) {
     if (primera) {
-      $('#contenido__api--tablaVideos').append(`<tr style="border: 1px solid black;padding: .5rem;"></tr>`)
+      $("#contenido__api--tablaVideos").append(
+        `<tr style="border: 1px solid black;padding: .5rem;"></tr>`
+      );
       for (const campo in video) {
-        $('#contenido__api--tablaVideos tr').append(`<th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">${campo}</th>`)
+        $("#contenido__api--tablaVideos tr").append(
+          `<th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">${campo}</th>`
+        );
       }
-      primera = false
+      primera = false;
     }
-    tablaVideos.append(`<tr style="border: 1px solid black;padding: .5rem;"></tr>`)
+    tablaVideos.append(
+      `<tr style="border: 1px solid black;padding: .5rem;"></tr>`
+    );
     for (const campo in video) {
-      $('#contenido__api--tablaVideos tr:last-child').append(`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video[campo]}</td>`)
-
+      $("#contenido__api--tablaVideos tr:last-child").append(
+        `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video[campo]}</td>`
+      );
     }
   }
 };
@@ -500,4 +540,27 @@ const renderCommercialContentData = (json) => {
   $("#contenido__api--tablaCommercialContent").append(td);
 };
 
+function createFieldsCheckbox(fields, query) {
+  let select = `<div style="display:flex;flex-direction:column"><label for="${query}">Fields:</label>
+<select id="${query}" name="${query}" multiple>`;
+  for (let field of fields) {
+    select += `<option  value="${field}">${field}</option>`;
+  }
+  select += `</select></div>`;
+  $(`#fields_${query}Container`).append(select);
+  $(`#${query}`).select2();
+}
 
+function createFieldsRange(max, query) {
+  let range = ` <div style="display: flex; flex-direction: column">
+                  <label for="${query}_max_count">max_count: </label
+                  ><input
+                    type="range"
+                    min="0"
+                    max="${max}"
+                    name="${query}_max_count"
+                    id="${query}_max_count"
+                  />
+                </div> `;
+  $(`#fields_${query}Container`).append(range);
+}

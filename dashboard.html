@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"
+  ></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/fakedata.js"></script>
+  <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
 
-
-<link rel="stylesheet" href="style2.css">
-<style>
-  * {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-</style>
-</head>
-
-
-
-<body>
-  <header>
-    <nav style="
+  <body>
+    <header>
+      <nav
+        style="
           display: flex;
           align-items: center;
           justify-content: space-evenly;
-        ">
-      <a href="/index.html"><img style="width: 2rem" src="https://cdn-icons-png.flaticon.com/512/2343/2343970.png"
-          alt="Icono" /></a>
+        "
+      >
+        <a href="/index.html"
+          ><img
+            style="width: 2rem"
+            src="https://cdn-icons-png.flaticon.com/512/2343/2343970.png"
+            alt="Icono"
+        /></a>
 
-      <div class="nav__login" style="display: flex; gap: 2rem">
-        <a href="/index.html" style="color: black">MarvelCrowd</a>
-        <a href="/login.html" style="color: black">Log in</a>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <div class="contenido" style="
+        <div class="nav__login" style="display: flex; gap: 2rem">
+          <a href="/dashboard.html" style="color: black">Dashboard</a>
+          <a href="/index.html" style="color: black">Log in</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div
+        class="contenido"
+        style="
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -37,490 +51,841 @@
           padding: 1rem;
           background-color: white;
           gap: 3rem;
-        ">
-      <hr style="width: 90%;">
-
-      <div class="contenido__api" style="
+        "
+      >
+        <div
+          class="contenido__boton"
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+          "
+        >
+          <img
+            id="dev_image"
+            src="https://sf16-muse-va.ibytedtos.com/obj/tiktok-open-platform/ttop_doc_images/66e0a0d14830c5cac14269acc0981348"
+            alt="tiktok dev"
+            style="margin: 1rem; max-width: 30rem"
+          />
+          <a
+            style="
+              font-size: 1.3rem;
+              min-width: 12rem;
+              background-color: #000000;
+              border-right: 2px solid red;
+              border-bottom: 2px solid blue;
+              border-radius: 0.2rem;
+              padding: 0.5rem;
+              color: white;
+              text-decoration: none;
+              font-weight: bold;
+              font-size: 1.4rem;
+            "
+            id="tiktokButton"
+            href="#"
+            >Continue with TikTok</a
+          >
+        </div>
+        <div
+          class="contenido__api"
+          style="
             display: flex;
             align-items: center;
             flex-direction: column;
             gap: 2rem;
-          ">
-          <div style="display:flex;align-items: center;gap:.2rem;font-weight: bold;width: 70%;align-items: flex-start;flex-direction: column;padding: 0 5rem;">
-            <div style="display: flex;width:100%;gap:1rem"><label for="input_code">CODE:</label><input type="text" name="input_code" id="input_code" style="width:100%;"></div>
-            <div style="display: flex;">
-              <span style="font-weight: bold;">access_token:&nbsp;</span><span style="font-weight: 100;" id="access_token">asdasdasasasd</span>
-            </div>
-          </div>
+          "
+        >
+          <table id="contenido__api--tablaUserInfo" style="width: 100%">
+            <span style="height: 2rem; font-size: 2rem; font-weight: 600"
+              >GET USER INFO</span
+            >
 
-        <div style="display: flex; ">
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                Field
+              </th>
+              <th
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                Data
+              </th>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                open_id:
+              </th>
+              <td
+                id="open_id--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                union_id:
+              </th>
+              <td
+                id="union_id--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                avatar_url:
+              </th>
+              <td
+                id="avatar_url--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                avatar_url100:
+              </th>
+              <td
+                id="avatar_url100--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                avatar_large_url:
+              </th>
+              <td
+                id="avatar_large_url--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                display_name:
+              </th>
+              <td
+                id="display_name--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                bio_description:
+              </th>
+              <td
+                id="bio_description--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                profile_deep_link:
+              </th>
+              <td
+                id="profile_deep_link--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                is_verified:
+              </th>
+              <td
+                id="is_verified--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                follower_count:
+              </th>
+              <td
+                id="follower_count--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                following_count:
+              </th>
+              <td
+                id="following_count--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                likes_count:
+              </th>
+              <td
+                id="likes_count--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                style="
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                  max-width: 2rem;
+                "
+              >
+                video_count:
+              </th>
+              <td
+                id="video_count--data"
+                style="
+                  max-width: 100%;
+                  overflow: hidden;
+                  border: 1px solid black;
+                  padding: 0.5rem;
+                "
+              ></td>
+            </tr>
+          </table>
+
           <div
-            style="margin-right:1rem;display: flex;gap:2rem;background-color: #2a2a2a2a;border-radius: .5rem;padding: 1rem; min-height: 14rem;align-items: center;justify-content: center;">
-            <div id="busquedasDisplayAPI" style="display: flex; flex-direction: column; gap: 1rem; height: 100%;">
-              <span style="height: 2rem;font-size: 2.5rem;font-weight: 600;">Display API</span>
-              <div class="busquedasDisplayAPI__queryListVideos"
-                style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-                <div class="queryVideos"
-                  style="padding:1rem;flex-grow: 1;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
-                  <span style="height: 2rem;font-size: 1.5rem;font-weight: 400;">GET USER INFO</span>
-                  <button id="queryUser__boton--buscar">Buscar</button>
-                </div>
-              </div>
-              <div class="busquedasDisplayAPI__queryVideos"
-                style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-                <div class="queryVideos"
-                  style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
-                  <span style="height: 2rem;font-size: 1.5rem;font-weight: 400;">QUERY VIDEOS</span>
-                  <div style="display: flex;gap:1rem;">
-                    <button id="queryVideos__boton--limpiar">Limpiar</button>
-                    <div>
-                      <label for="queryVideos__input">*ID: </label><input type="text" name="queryVideos__input"
-                        id="queryVideos__input"><button id="queryVideos__boton--anyadir">Añadir</button>
-                    </div>
+            style="
+              display: flex;
+              gap: 2rem;
+              width: 100%;
+              background-color: #2a2a2a2a;
+              border-radius: 0.5rem;
+              padding: 1rem;
+              min-height: 14rem;
+            "
+          >
+            <div
+              class="busquedasDisplayAPI__queryVideos"
+              style="
+                background-color: white;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                border: 1px solid black;
+              "
+            >
+              <div
+                class="idsVideos"
+                style="
+                  padding: 1rem;
+                  max-width: 22.5rem;
+                  display: flex;
+                  gap: 2rem;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <span style="height: 2rem; font-size: 2rem; font-weight: 600"
+                  >QUERY VIDEOS</span
+                >
+                <div style="display: flex; gap: 2rem">
+                  <button id="idsVideos__boton--limpiar">Limpiar</button>
+                  <div>
+                    <label for="idsVideos__input">ID: </label
+                    ><input
+                      type="text"
+                      name="idsVideos__input"
+                      id="idsVideos__input"
+                    /><button id="idsVideos__boton--anyadir">Añadir</button>
                   </div>
-                  <div style="display:flex">
-                    <b>IDS:</b>&nbsp;
-                    <ul id="queryVideos__list" style="margin: 0;">
-                    </ul>
-                  </div>
-                  <button id="queryVideos__boton--buscar">Buscar</button>
                 </div>
-              </div>
-              <div class="busquedasDisplayAPI__queryListVideos"
-                style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-                <div class="idsVideos"
-                  style="padding:1rem;flex-grow: 1;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
-                  <span style="height: 2rem;font-size: 1.5rem;font-weight: 400;">LIST VIDEOS</span>
-                  <div style="display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;gap: 1rem;">
-                    <div style="display:flex;align-items: center;justify-content: center;">
-                      <div style="min-width: 1.1rem;margin-right:.2rem"><span id="listVideos__numero">11</span></div>
-                      <label for="listVideos__label">Video/s <img title="The maximum number of videos that will be returned from each page. Default is 10. Maximum is 20." src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon" style="height: .9rem;width: .9rem;"> : </label>
-                      <input type="range" min="1" max="20" name="listVideos__input" id="listVideos__input">
-
-                    </div>
-                    <div style="display: flex;gap: .5rem;">
-                      <label for="listVideos__label">cursor <img title="Cursor for pagination. If response.has_more is true, pass in the response.cursor to the next request will yield the results for the next page.
-
-Note: the cursor value is a UTC Unix timestamp in milli-seconds. You can pass in a customized timestamp to fetch the user's videos posted before the provided timestamp." src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon" style="height: .9rem;width: .9rem;">:</label><input type="number" name="listVideos__input--cursor" id="listVideos__input--cursor" style="
-      flex-grow: 1;
-  " max="1000">
-                    </div>
-                  </div>
-                  <button id="listVideos__boton--buscar">Buscar</button>
+                <div style="display: flex">
+                  <b>IDS:</b>&nbsp;
+                  <ul id="idsVideos__list" style="margin: 0"></ul>
                 </div>
+                <button id="idsVideos__boton--buscar">Buscar</button>
               </div>
             </div>
-            <div style="background-color: #afafaf;height: 80%;width: .1rem;margin-top:4rem"></div>
-            <div id="busquedasResearchAPI" style="display: flex; flex-direction: column; gap: 1rem;">
-              <span style="height: 2rem;font-size: 2.5rem;font-weight: 600;">Research API</span>
-              <div class="busquedasResearchAPI__queryVideos"
-                style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-                <div class="queryUserR"
-                  style="padding:1rem;width: 100%;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
-                  <span style="height: 2rem;font-size: 1.5rem;font-weight: 400;">QUERY USER INFO</span>
-                  <div style="display: flex;gap:.5rem;">
-
-                    <label for="queryUserR__input">*Username:</label><input type="text" name="queryUserR__input"
-                      id="queryUserR__input" style="flex-grow: 1;">
+            <div
+              class="busquedasDisplayAPI__queryListVideos"
+              style="
+                background-color: white;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                border: 1px solid black;
+              "
+            >
+              <div
+                class="idsVideos"
+                style="
+                  padding: 1rem;
+                  max-width: 22.5rem;
+                  display: flex;
+                  gap: 2rem;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <span style="height: 2rem; font-size: 2rem; font-weight: 600"
+                  >LIST VIDEOS</span
+                >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 1rem;
+                  "
+                >
+                  <span
+                    id="listVideos__numero"
+                    style="
+                      min-height: 1rem;
+                      min-width: 1.5rem;
+                      margin-top: 0.3rem;
+                    "
+                    >10</span
+                  >
+                  <div>
+                    <label for="listVideos__label">Videos: </label
+                    ><input
+                      type="range"
+                      min="0"
+                      max="20"
+                      name="listVideos__input"
+                      id="listVideos__input"
+                    />
                   </div>
-
-                  <button id="queryUserR__boton--buscar">Buscar</button>
                 </div>
+                <button id="listVideos__boton--buscar">Buscar</button>
               </div>
-              <div class="busquedasResearchAPI__queryListVideos"
-                style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-                <div class="queryVideosR"
-                  style="padding:1rem;flex-grow: 1;display: flex;flex-direction: column;justify-content: center;">
-                  <span style="height: 2rem;font-size: 1.5rem;font-weight: 400;">QUERY VIDEOS</span>
-                  <div
-                    style="padding:1rem;flex-grow: 1;display: flex;gap: 1rem;flex-direction: column;justify-content: center;">
-
-                    <div style="display: flex;gap:.5rem;">
-
-                      <label for="queryVideosR__input--query">*<a
-                          href="https://developers.tiktok.com/doc/research-api-specs-query-videos/"
-                          target="_blank">query</a>:
-                      </label><input type="text" name="queryVideosR__input--query" id="queryVideosR__input--query"
-                        style="flex-grow: 1;" placeholder="{}">
+            </div>
+            <div
+              class="busquedasDisplayAPI__fields"
+              style="
+                background-color: white;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                border: 1px solid black;
+              "
+            >
+              <div
+                style="
+                  padding: 1rem;
+                  max-width: 22.5rem;
+                  display: flex;
+                  gap: 2rem;
+                  flex-direction: column;
+                  justify-content: center;
+                "
+              >
+                <span style="height: 2rem; font-size: 2rem; font-weight: 600"
+                  >Fields</span
+                >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 3rem;
+                  "
+                >
+                  <div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="id"
+                        id="fields_field--id"
+                      /><label style="user-select: none" for="fields_field--id"
+                        >id</label
+                      >
                     </div>
-                    <div style="display:flex;gap: .5rem;">
-                      <label for="queryVideosR__label--start_date">*start_date</label><input type="date"
-                        name="queryVideosR__input--start_date" id="queryVideosR__input--start_date" style="
-    flex-grow: 1;text-align:center;
-">
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="create_time"
+                        id="fields_field--create_time"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--create_time"
+                        >create_time</label
+                      >
                     </div>
-                    <div style="display:flex;gap: .5rem;">
-                      <label for="queryVideosR__label--end_date">*end_date <img title="The upper bound of video creation time in UTC
-The end_date must be no more than 30 days after the start_date"
-                          src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
-                          style="height: .9rem;width:.9rem;"></label><input type="date"
-                        name="queryVideosR__input--end_date" id="queryVideosR__input--end_date" style="
-    flex-grow: 1;text-align:center;
-">
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="cover_image_url"
+                        id="fields_field--cover_image_url"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--cover_image_url"
+                        >cover_image_url</label
+                      >
                     </div>
-                    <div style="display: flex;gap: .5rem;">
-                      <label for="queryVideosR__input--maxcount">max_count <img
-                          title="The number of videos in response. Default is 20, max is 100.
-It is possible that the API returns less videos than the max count due to reasons such as videos deleted/marked as private by users etc."
-                          src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
-                          style="height: .9rem;width:.9rem;">:</label><input
-                        onkeyup="if(this.value > 100) this.value = null;" type="number"
-                        name="queryVideosR__input--maxcount" id="queryVideosR__input--maxcount" style="
-    flex-grow: 1;
-" value="20" max="100">
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="share_url"
+                        id="fields_field--share_url"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--share_url"
+                        >share_url</label
+                      >
                     </div>
-                    <div style="display: flex;gap: .5rem;">
-                      <label for="queryVideosR__input--cursor">cursor <img
-                          title="Retrieve video results starting from the specified index."
-                          src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
-                          style="height: .9rem;width: .9rem;">:</label><input type="number" name="queryVideosR__input--cursor"
-                        id="queryVideosR__input--cursor" style="
-      flex-grow: 1;
-  " max="1000">
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="video_description"
+                        id="fields_field--video_description"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--video_description"
+                        >video_description</label
+                      >
                     </div>
-                    <div style="display: flex;gap: .5rem;">
-                      <label for="queryVideosR__input--search_id">search_id: <img title="The flag that indicates whether to return results in a random order.
-If set to true, then the API returns 1 - 100 videos in random order that matches the query.
-If set to false or not set with any value, then the API returns results in the decreasing order of video IDs."
-                          src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
-                          style="height: .9rem;width: .9rem;"></label><input type="text" name="queryVideosR__input--search_id"
-                        id="queryVideosR__input--search_id" style="
-    flex-grow: 1;
-">
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="duration"
+                        id="fields_field--duration"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--duration"
+                        >duration</label
+                      >
                     </div>
-                    <div><input class="fieldIsRandom__checkbox" type="checkbox" name="is_random" id="queryVideosR__input--is_random"><label
-                        style="user-select: none;" for="queryVideosR__input--is_random">is_random</label></div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="height"
+                        id="fields_field--height"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--height"
+                        >height</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="width"
+                        id="fields_field--width"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--width"
+                        >width</label
+                      >
+                    </div>
                   </div>
-                  <button id="queryVideosR__boton--buscar">Buscar</button>
-                </div>
-              </div>
-              <div class="busquedasDisplayAPI__queryVideos"
-                style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-                <div class="queryVideosR"
-                  style="padding:1rem;flex-grow: 1;display: flex;gap: 1rem;flex-direction: column;justify-content: center;">
-                  <span style="height: 2rem;font-size: 1.5rem;font-weight: 400;">QUERY VIDEO COMMENTS</span>
-                  <div style="display: flex;gap: .5rem;">
-                    <label for="queryVideoComments__input--id">*ID: </label><input type="text" name="queryVideoComments__input--id"
-                      id="queryVideoComments__input--id" style="
-    flex-grow: 1;
-">
+                  <div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="title"
+                        id="fields_field--title"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--title"
+                        >title</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="embed_html"
+                        id="fields_field--embed_html"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--embed_html"
+                        >embed_html</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="embed_link"
+                        id="fields_field--embed_link"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--embed_link"
+                        >embed_link</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="like_count"
+                        id="fields_field--like_count"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--like_count"
+                        >like_count</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="comment_count"
+                        id="fields_field--comment_count"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--comment_count"
+                        >comment_count</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="share_count"
+                        id="fields_field--share_count"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--share_count"
+                        >share_count</label
+                      >
+                    </div>
+                    <div>
+                      <input
+                        checked
+                        class="field__checkbox"
+                        type="checkbox"
+                        name="view_count"
+                        id="fields_field--view_count"
+                      /><label
+                        style="user-select: none"
+                        for="fields_field--view_count"
+                        >view_count</label
+                      >
+                    </div>
                   </div>
-                  <div style="display: flex;gap: .5rem;">
-                    <label for="queryVideoComments__input--max_count">max_count <img
-                        title="The number of comments in response.Default is 10, max is 100.
-It is possible that the API returns less comments than the max count due to reasons such as comments deleted by users etc."
-                        src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
-                        style="height: .9rem;width:.9rem;">:</label><input
-                      onkeyup="if(this.value > 100) this.value = null;" type="number" name="queryVideoComments__input--max_count"
-                      id="queryVideoComments__input--max_count" style="
-    flex-grow: 1;
-" value="10" max="100">
-                  </div>
-                  <div style="display: flex;gap: .5rem;">
-                    <label for="queryVideoComments__input--cursor">cursor <img title="The starting index of the comments in the response.
-Note: only the top 1000 comments will be returned, so cursor + max_count <= 1000."
-                        src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
-                        style="height: .9rem;width:.9rem;">:</label><input
-                      onkeyup="if(this.value > 999) this.value = null;" type="number" name="queryVideoComments__input--cursor"
-                      id="queryVideoComments__input--cursor" style="
-    flex-grow: 1;
-" max="1000">
-                  </div>
-                  <button id="queryVideoComments__boton--buscar">Buscar</button>
                 </div>
               </div>
             </div>
           </div>
+          <table id="contenido__api--tablaVideos">
+            <span
+              style="
+                font-size: 1.6rem;
+                font-weight: 400;
+                align-self: flex-start;
+              "
+              >Videos:</span
+            >
 
-          <div class="busquedasDisplayAPI__fields"
-            style="background-color: white;flex-grow: 1;display: flex; justify-content: center;border: 1px solid black;">
-            <div style="padding:1rem;max-width: 22.5rem;display: flex;gap:2rem;flex-direction: column;justify-content: center;">
-              <span style="height: 2rem;font-size: 2rem;font-weight: 400;">Fields</span>
-              <div style="display: flex; flex-direction: column; align-items: center;justify-content: center;align-items:flex-start;">
+            <tr style="border: 1px solid black; padding: 0.5rem">
+              <th
+                id="tablaVideos__th--id"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                id
+              </th>
+              <th
+                id="tablaVideos__th--create_time"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                create_time
+              </th>
+              <th
+                id="tablaVideos__th--cover_image_url"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                cover_image_url
+              </th>
+              <th
+                id="tablaVideos__th--share_url"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                share_url
+              </th>
+              <th
+                id="tablaVideos__th--video_description"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                video_description
+              </th>
+              <th
+                id="tablaVideos__th--duration"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                duration
+              </th>
+              <th
+                id="tablaVideos__th--height"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                height
+              </th>
+              <th
+                id="tablaVideos__th--width"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                width
+              </th>
+              <th
+                id="tablaVideos__th--title"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                title
+              </th>
+              <th
+                id="tablaVideos__th--embed_html"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                embed_html
+              </th>
+              <th
+                id="tablaVideos__th--embed_link"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                embed_link
+              </th>
+              <th
+                id="tablaVideos__th--like_count"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                like_count
+              </th>
+              <th
+                id="tablaVideos__th--comment_count"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                comment_count
+              </th>
+              <th
+                id="tablaVideos__th--share_count"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                share_count
+              </th>
+              <th
+                id="tablaVideos__th--view_count"
+                style="background-color: #000000; color: white; padding: 0.5rem"
+              >
+                view_count
+              </th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <hr style="width: 90%" />
+      <div>
+        <div class="busquedasDisplayAPI__fields">
+          <div>
+            <span style="height: 2rem; font-size: 2rem; font-weight: 600">
+              Fields
+            </span>
+            <div style="display: flex">
+              <div id="fields_adsContainer" style="display: flex">
+                <div style="display: flex; flex-direction: column">
+                  <label for="ads_text">Text</label>
+                  <input type="text" name="ads_text" id="ads_text" />
+                </div>
+                <div>
+                  <legend>Tipo busqueda text:</legend>
 
-                <span style="height: 2rem;font-size: 1.3rem;font-weight: 400;">User</span>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="open_id" id="fields_field--open_id"><label style="user-select: none;" for="fields_field--open_id">open_id</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="union_id" id="fields_field--union_id"><label style="user-select: none;" for="fields_field--union_id">union_id</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="avatar_url" id="fields_field--avatar_url"><label style="user-select: none;" for="fields_field--avatar_url">avatar_url</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="avatar_url_100" id="fields_field--avatar_url_100"><label style="user-select: none;" for="fields_field--avatar_url_100">avatar_url_100</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="avatar_large_url" id="fields_field--avatar_large_url"><label style="user-select: none;" for="fields_field--avatar_large_url">avatar_large_url</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="display_name" id="fields_field--display_name"><label style="user-select: none;" for="fields_field--display_name">display_name</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="bio_description" id="fields_field--bio_description"><label style="user-select: none;" for="fields_field--bio_description">bio_description</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="profile_deep_link" id="fields_field--profile_deep_link"><label style="user-select: none;" for="fields_field--profile_deep_link">profile_deep_link</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="is_verified" id="fields_field--is_verified"><label style="user-select: none;" for="fields_field--is_verified">is_verified</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="follower_count" id="fields_field--follower_count"><label style="user-select: none;" for="fields_field--follower_count">follower_count</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="following_count" id="fields_field--following_count"><label style="user-select: none;" for="fields_field--following_count">following_count</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="likes_count" id="fields_field--likes_count"><label style="user-select: none;" for="fields_field--likes_count">likes_count</label></div>
-                <div><input checked="" class="fieldUser__checkbox" type="checkbox" name="video_count" id="fields_field--video_count"><label style="user-select: none;" for="fields_field--video_count">video_count</label></div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="exact_phrase"
+                      name="text_search"
+                      value="exact_phrase"
+                    />
+                    <label for="exact_phrase">exacta</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      id="fuzzy_phrase"
+                      name="text_search"
+                      value="fuzzy_phrase"
+                    />
+                    <label for="fuzzy_phrase">no exacta</label>
+                  </div>
+                </div>
               </div>
-            <div style="display: flex; flex-direction: column; align-items: center;justify-content: center;align-items:flex-start;">
-
-                <span style="height: 2rem;font-size: 1.3rem;font-weight: 400;">Video</span><div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="id" id="fields_field--id"><label style="user-select: none;" for="fields_field--id">id</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="create_time" id="fields_field--create_time"><label style="user-select: none;" for="fields_field--create_time">create_time</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="cover_image_url" id="fields_field--cover_image_url"><label style="user-select: none;" for="fields_field--cover_image_url">cover_image_url</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="share_url" id="fields_field--share_url"><label style="user-select: none;" for="fields_field--share_url">share_url</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="video_description" id="fields_field--video_description"><label style="user-select: none;" for="fields_field--video_description">video_description</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="duration" id="fields_field--duration"><label style="user-select: none;" for="fields_field--duration">duration</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="height" id="fields_field--height"><label style="user-select: none;" for="fields_field--height">height</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="width" id="fields_field--width"><label style="user-select: none;" for="fields_field--width">width</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="title" id="fields_field--title"><label style="user-select: none;" for="fields_field--title">title</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="embed_html" id="fields_field--embed_html"><label style="user-select: none;" for="fields_field--embed_html">embed_html</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="embed_link" id="fields_field--embed_link"><label style="user-select: none;" for="fields_field--embed_link">embed_link</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="like_count" id="fields_field--like_count"><label style="user-select: none;" for="fields_field--like_count">like_count</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="comment_count" id="fields_field--comment_count"><label style="user-select: none;" for="fields_field--comment_count">comment_count</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="share_count" id="fields_field--share_count"><label style="user-select: none;" for="fields_field--share_count">share_count</label></div>
-                <div><input checked="" class="fieldVideo__checkbox" type="checkbox" name="view_count" id="fields_field--view_count"><label style="user-select: none;" for="fields_field--view_count">view_count</label></div>
-              </div></div>
+            </div>
           </div>
         </div>
-
-        <table id="contenido__api--tablaUserInfo" style="width: 100%;">
-
-          <span style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;">GET USER INFO</span>
-
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
-              Field
-            </th>
-            <th style="background-color: #000000; color: white; padding: 0.5rem">
-              Data
-            </th>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">open_id:</th>
-            <td id="open_id--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              union_id:
-            </th>
-            <td id="union_id--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              avatar_url:
-            </th>
-            <td id="avatar_url--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              avatar_url100:
-            </th>
-            <td id="avatar_url100--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              avatar_large_url:
-            </th>
-            <td id="avatar_large_url--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              display_name:
-            </th>
-            <td id="display_name--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              bio_description:
-            </th>
-            <td id="bio_description--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              profile_deep_link:
-            </th>
-            <td id="profile_deep_link--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              is_verified:
-            </th>
-            <td id="is_verified--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              follower_count:
-            </th>
-            <td id="follower_count--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              following_count:
-            </th>
-            <td id="following_count--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              likes_count:
-            </th>
-            <td id="likes_count--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-          <tr style="border: 1px solid black; padding: 0.5rem">
-            <th style="border: 1px solid black; padding: 0.5rem;max-width:2rem">
-              video_count:
-            </th>
-            <td id="video_count--data" style="
-                  max-width: 100%;overflow: hidden;
-                  border: 1px solid black;
-                  padding: 0.5rem;
-                "></td>
-          </tr>
-        </table>
-
-
-        <table id="contenido__api--tablaVideos">
-          <span style="font-size: 1.6rem;font-weight: 400; align-self: flex-start;">Videos:</span>
-
-          <tr id="tablaVideos__th" style="border: 1px solid black; padding: 0.5rem">
-            <th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">
-              id
-            </th>
-            <th id="tablaVideos__th--create_time" style="background-color: #000000; color: white; padding: 0.5rem">
-              create_time
-            </th>
-            <th id="tablaVideos__th--cover_image_url" style="background-color: #000000; color: white; padding: 0.5rem">
-              cover_image_url
-            </th>
-            <th id="tablaVideos__th--share_url" style="background-color: #000000; color: white; padding: 0.5rem">
-              share_url
-            </th>
-            <th id="tablaVideos__th--video_description"
-              style="background-color: #000000; color: white; padding: 0.5rem">
-              video_description
-            </th>
-            <th id="tablaVideos__th--duration" style="background-color: #000000; color: white; padding: 0.5rem">
-              duration
-            </th>
-            <th id="tablaVideos__th--height" style="background-color: #000000; color: white; padding: 0.5rem">
-              height
-            </th>
-            <th id="tablaVideos__th--width" style="background-color: #000000; color: white; padding: 0.5rem">
-              width
-            </th>
-            <th id="tablaVideos__th--title" style="background-color: #000000; color: white; padding: 0.5rem">
-              title
-            </th>
-            <th id="tablaVideos__th--embed_html" style="background-color: #000000; color: white; padding: 0.5rem">
-              embed_html
-            </th>
-            <th id="tablaVideos__th--embed_link" style="background-color: #000000; color: white; padding: 0.5rem">
-              embed_link
-            </th>
-            <th id="tablaVideos__th--like_count" style="background-color: #000000; color: white; padding: 0.5rem">
-              like_count
-            </th>
-            <th id="tablaVideos__th--comment_count" style="background-color: #000000; color: white; padding: 0.5rem">
-              comment_count
-            </th>
-            <th id="tablaVideos__th--share_count" style="background-color: #000000; color: white; padding: 0.5rem">
-              share_count
-            </th>
-            <th id="tablaVideos__th--view_count" style="background-color: #000000; color: white; padding: 0.5rem">
-              view_count
-            </th>
-          </tr>
-        </table>
-      </div>
-      <hr style="width: 90%;">
-      <div
-        style="display: flex;flex-direction: column; align-items: center;justify-content: center;max-width: 100%; gap: 2rem;">
-        <span style="height: 2rem;font-size: 2.5rem;font-weight: 600;">Commercial Content API</span>
-
         <table id="contenido__api--tablaAds">
           <caption>
-            <span
-              style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY
-              ADS</span>
-
+            QUERY ADS
           </caption>
         </table>
         <table id="contenido__api--tablaAdvertisers">
           <caption>
-            <span
-              style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY
-              ADVERTISERS</span>
-
+            QUERY ADVERTISERS
           </caption>
         </table>
-        <table id="contenido__api--tablaAdDetails" style="align-self: flex-start;">
+        <table id="contenido__api--tablaAdDetails">
           <caption>
-            <span
-              style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY
-              AD DETAILS</span>
-
+            QUERY AD DETAILS
           </caption>
         </table>
         <table id="contenido__api--tablaAdReport">
           <caption>
-            <span
-              style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY
-              AD REPORT</span>
-
+            QUERY AD REPORT
           </caption>
         </table>
         <table id="contenido__api--tablaCommercialContent">
           <caption>
-            <span
-              style="height: 2rem;font-size: 2rem;font-weight: 600; align-self: flex-start;margin-bottom: 1rem;">QUERY
-              Content</span>
-
+            QUERY Commercial Content
           </caption>
         </table>
       </div>
-    </div>
-  </main>
-</body>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script type="module" src="js/index.js"></script>
-<script type="module" src="js/fakedata.js"></script>
+    </main>
+  </body>
 </html>
