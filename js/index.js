@@ -33,6 +33,25 @@ var getFieldsClass = (clase) => {
     .get();
 }
 
+export function redirectToTikTok() {
+  // Simula una solicitud al servidor cuando se hace clic en el botón
+  fetch('https://cuddly-meme-5ggvgvvqrx642vr9j-5500.app.github.dev/oauth')  // La ruta debe coincidir con tu ruta existente en el servidor
+    .then(response => {
+      if (response.ok) {
+        // Redirige al usuario a la URL generada por el servidor
+        return response.text();
+      } else {
+        throw new Error('Error al iniciar sesión con TikTok');
+      }
+    })
+    .then(url => {
+      window.location.href = url;
+    })
+    .catch(error => {
+      console.error(error);
+      // Maneja el error según sea necesario
+    });
+}
 
 $(document).ready(function () {
   var fieldsSelected = [];
@@ -52,6 +71,7 @@ $(document).ready(function () {
     UserData.then((res) => renderUserData(res));
   });
 
+  $('#iniTikTok').on('click', redirectToTikTok);
 
   /* Query User Info - Research API */
   $("#queryUserR__boton--buscar").on("click", () => {
@@ -194,7 +214,6 @@ $(document).ready(function () {
     );
     videoData.then((res) => renderVideoData(res));
   });
-
 
 
   //https://open.tiktokapis.com/v2/research/adlib/ad/query/
@@ -480,3 +499,5 @@ const renderCommercialContentData = (json) => {
   $("#contenido__api--tablaCommercialContent").append(th);
   $("#contenido__api--tablaCommercialContent").append(td);
 };
+
+
