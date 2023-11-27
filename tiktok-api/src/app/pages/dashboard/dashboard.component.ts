@@ -24,22 +24,25 @@ import { queryCommercialContentResponse } from './components/queryCommercialCont
     queryAdReportResponse,
     queryCommercialContentResponse,
   ],
-  template: `<mat-tab-group dynamicHeight>
-    <mat-tab label="User info "> <app-user-info></app-user-info> </mat-tab>
-    <mat-tab label="Ads"> <app-ads></app-ads> </mat-tab>
-    <mat-tab
-      label="Adver
-    siters"
-    >
-      <app-advertisers></app-advertisers>
-    </mat-tab>
-    <mat-tab label="Ad detail"> <app-ad-detail></app-ad-detail> </mat-tab>
-    <mat-tab label="Ad report"> <app-ad-report></app-ad-report> </mat-tab>
-    <mat-tab label="Commercial content">
-      <app-commercial-content></app-commercial-content>
-    </mat-tab>
-  </mat-tab-group> `,
-  styleUrl: './dashboard.component.css',
+  template: `
+    <div class="bg-green-50 h-full">
+      <mat-tab-group>
+        <mat-tab label="User info ">
+          <app-user-info class="h-full"></app-user-info>
+        </mat-tab>
+        <mat-tab label="Ads"> <app-ads></app-ads> </mat-tab>
+        <mat-tab label="Adverstisers">
+          <app-advertisers></app-advertisers>
+        </mat-tab>
+        <mat-tab label="Ad detail"> <app-ad-detail></app-ad-detail> </mat-tab>
+        <mat-tab label="Ad report"> <app-ad-report></app-ad-report> </mat-tab>
+        <mat-tab label="Commercial content">
+          <app-commercial-content></app-commercial-content>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  `,
+  styleUrl: './dashboard.component.sass',
 })
 export class DashboardComponent {
   constructor() {}

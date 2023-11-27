@@ -68,7 +68,4 @@ import { TiktokService } from '../../services/tiktok.service';
     </footer>
   </div> `,
 })
-export class LoginComponent {
-
-  
-}
+export class LoginComponent {}

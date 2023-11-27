@@ -9,10 +9,14 @@ import { UserApiService } from '../../../services/userApi.service';
   selector: 'app-user-info',
   imports: [CommonModule, MatTableModule, genericTableComponent],
   standalone: true,
-  template: `<app-generic-table
-    [data]="userData"
-    [displayedColumns]="displayedColumns"
-  ></app-generic-table>`,
+  template: ` <div class="bg-green-50">
+    <h2>User data</h2>
+
+    <app-generic-table
+      [data]="userData"
+      [displayedColumns]="displayedColumns"
+    ></app-generic-table>
+  </div>`,
 })
 export class queryUserInfoResponseComponent implements OnInit {
   userData: any[] = [];
