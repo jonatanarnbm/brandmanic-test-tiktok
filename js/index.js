@@ -256,13 +256,12 @@ const renderVideoData = (json) => {
         $('#contenido__api--tablaVideos tr').append(`<th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">${campo}</th>`)
       }
       primera = false
-      tablaVideos.append(`<tr style="border: 1px solid black;padding: .5rem;"></tr>`)
     }
+    tablaVideos.append(`<tr style="border: 1px solid black;padding: .5rem;"></tr>`)
     for (const campo in video) {
       $('#contenido__api--tablaVideos tr:last-child').append(`<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video[campo]}</td>`)
 
     }
-    tablaVideos.append(`<tr style="border: 1px solid black;padding: .5rem;"></tr>`)
   }
 };
 
