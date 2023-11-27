@@ -1,37 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { TiktokService } from '../../../services/tiktok.service';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { genericTableComponent } from './generictable.component';
-import { UserApiService } from '../../../services/userApi.service';
+import { AdvertiserApiService } from '../../../services/AdvertiserApi.service';
 
 @Component({
-  selector: 'app-user-info',
+  selector: 'app-advertisers',
   imports: [CommonModule, MatTableModule, genericTableComponent],
   standalone: true,
   template: `<app-generic-table
-    [data]="userData"
+    [data]="data"
     [displayedColumns]="displayedColumns"
   ></app-generic-table>`,
 })
-export class queryUserInfoResponseComponent implements OnInit {
-  userData: any[] = [];
+export class queryAdvertisersResponse implements OnInit {
+  data: any[] = [];
   subs: Subscription[] = [];
   displayedColumns: string[] = [];
 
-  constructor(private readonly userApi: UserApiService) {}
+  constructor(private readonly advertiserApi: AdvertiserApiService) {}
 
   ngOnInit(): void {
-    this.userApi.getqueryUserInfoResponse();
-    let sub = this.userApi
-      .getTableUserData()
+    this.advertiserApi.getqueryAdvertisersResponse();
+    let sub = this.advertiserApi
+      .getTableAdvertiser()
       .asObservable()
       .subscribe((data) => {
-        this.userData = data;
+        this.data = data;
       });
     this.subs.push(sub);
-    sub = this.userApi
-      .getFieldsUser()
+    sub = this.advertiserApi
+      .getFieldsAdvertiser()
       .asObservable()
       .subscribe((data) => {
         this.displayedColumns = data;

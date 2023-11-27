@@ -4,6 +4,11 @@ import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { queryUserInfoResponseComponent } from './components/queryUserInfoResponse.component';
+import { queryAdvertisersResponse } from './components/queryAdvertisersResponse.component';
+import { queryAdsResponse } from './components/queryAdsResponse.component';
+import { queryAdDetailResponse } from './components/queryAdDetailResponse.component';
+import { queryAdReportResponse } from './components/queryAdReportResponse.component';
+import { queryCommercialContentResponse } from './components/queryCommercialContentResponse.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +18,26 @@ import { queryUserInfoResponseComponent } from './components/queryUserInfoRespon
     MatTableModule,
     MatTabsModule,
     queryUserInfoResponseComponent,
+    queryAdvertisersResponse,
+    queryAdsResponse,
+    queryAdDetailResponse,
+    queryAdReportResponse,
+    queryCommercialContentResponse,
   ],
-  template: `<mat-tab-group>
-    <mat-tab label="User info api"> <app-user-info></app-user-info> </mat-tab>
+  template: `<mat-tab-group dynamicHeight>
+    <mat-tab label="User info "> <app-user-info></app-user-info> </mat-tab>
+    <mat-tab label="Ads"> <app-ads></app-ads> </mat-tab>
+    <mat-tab
+      label="Adver
+    siters"
+    >
+      <app-advertisers></app-advertisers>
+    </mat-tab>
+    <mat-tab label="Ad detail"> <app-ad-detail></app-ad-detail> </mat-tab>
+    <mat-tab label="Ad report"> <app-ad-report></app-ad-report> </mat-tab>
+    <mat-tab label="Commercial content">
+      <app-commercial-content></app-commercial-content>
+    </mat-tab>
   </mat-tab-group> `,
   styleUrl: './dashboard.component.css',
 })

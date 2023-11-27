@@ -3,35 +3,35 @@ import { Subscription } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { genericTableComponent } from './generictable.component';
-import { UserApiService } from '../../../services/userApi.service';
+import { AdApiService } from '../../../services/adApi.service';
 
 @Component({
-  selector: 'app-user-info',
+  selector: 'app-ad-report',
   imports: [CommonModule, MatTableModule, genericTableComponent],
   standalone: true,
   template: `<app-generic-table
-    [data]="userData"
+    [data]="data"
     [displayedColumns]="displayedColumns"
-  ></app-generic-table>`,
+  ></app-generic-table> `,
 })
-export class queryUserInfoResponseComponent implements OnInit {
-  userData: any[] = [];
+export class queryAdReportResponse implements OnInit {
+  data: any[] = [];
   subs: Subscription[] = [];
   displayedColumns: string[] = [];
 
-  constructor(private readonly userApi: UserApiService) {}
+  constructor(private readonly adApi: AdApiService) {}
 
   ngOnInit(): void {
-    this.userApi.getqueryUserInfoResponse();
-    let sub = this.userApi
-      .getTableUserData()
+    this.adApi.getqueryAdReportResponse();
+    let sub = this.adApi
+      .getTableAdReport()
       .asObservable()
       .subscribe((data) => {
-        this.userData = data;
+        this.data = data;
       });
     this.subs.push(sub);
-    sub = this.userApi
-      .getFieldsUser()
+    sub = this.adApi
+      .getFieldsAdReport()
       .asObservable()
       .subscribe((data) => {
         this.displayedColumns = data;
