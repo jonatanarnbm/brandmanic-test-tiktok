@@ -27,10 +27,11 @@ import { queryCommercialContentResponse } from './components/queryCommercialCont
   template: `
     <div class="bg-green-50 h-full">
       <mat-tab-group>
-        <mat-tab label="User info ">
-          <app-user-info class="h-full"></app-user-info>
-        </mat-tab>
         <mat-tab label="Ads"> <app-ads></app-ads> </mat-tab>
+        <mat-tab label="User info ">
+          <app-user-info></app-user-info>
+        </mat-tab>
+
         <mat-tab label="Adverstisers">
           <app-advertisers></app-advertisers>
         </mat-tab>

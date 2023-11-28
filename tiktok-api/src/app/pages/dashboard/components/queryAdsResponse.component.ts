@@ -5,22 +5,30 @@ import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { genericTableComponent } from './generictable.component';
 import { AdApiService } from '../../../services/adApi.service';
+import { AdFormComponent } from './adform.component';
 
 @Component({
   selector: 'app-ads',
-  imports: [CommonModule, MatTableModule, genericTableComponent],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    genericTableComponent,
+    AdFormComponent,
+  ],
   standalone: true,
-  template: `<app-generic-table
-    [data]="data"
-    [displayedColumns]="displayedColumns"
-  ></app-generic-table>`,
+  template: ` <div class="flex gap-3 m-2 "></div>
+    <app-ad-form />
+    <app-generic-table
+      [data]="data"
+      [displayedColumns]="displayedColumns"
+    ></app-generic-table>`,
 })
 export class queryAdsResponse implements OnInit {
+  constructor(private readonly adApi: AdApiService) {}
+
   data: any[] = [];
   subs: Subscription[] = [];
   displayedColumns: string[] = [];
-
-  constructor(private readonly adApi: AdApiService) {}
 
   ngOnInit(): void {
     this.adApi.getqueryAdsResponse();
