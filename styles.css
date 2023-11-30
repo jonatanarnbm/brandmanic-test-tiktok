@@ -146,6 +146,7 @@ footer h2{
 .why-text {
     flex: 1;
     text-align: left;
+    color: #333;
 }
 
 .why-text h2 {
@@ -203,6 +204,11 @@ footer h2{
             border-radius: 8px;
             text-align: center;
             transition: transform 0.3s ease-in-out;
+        }
+
+        .team-member p:last-of-type {
+            color: #666;
+            line-height: 1.5;
         }
 
         .team-member img {
