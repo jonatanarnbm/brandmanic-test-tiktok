@@ -76,13 +76,27 @@ footer h2{
     display: inline-block;
 }
 
-.foot
 
 .footer-social img {
     width: 30px;
     height: 30px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.footer-links {
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    border-bottom: 1px solid #fff;
 }
 
 #our-services {
