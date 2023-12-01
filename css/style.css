@@ -106,7 +106,7 @@ main {
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form-button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -119,6 +119,7 @@ main {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  width: 100%;
 }
 .form button:hover,
 .form button:active,

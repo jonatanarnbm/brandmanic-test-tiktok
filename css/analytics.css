@@ -130,6 +130,10 @@ footer h2 {
     gap: 20px;
 }
 
+.nav__login{
+    display: flex;
+    gap: 2rem;
+}
 
 .post {
     background-color: #fff;
