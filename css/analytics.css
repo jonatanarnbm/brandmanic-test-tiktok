@@ -130,6 +130,7 @@ footer h2 {
     gap: 20px;
 }
 
+
 .post {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -154,10 +155,15 @@ footer h2 {
 /* Estilos para el contenedor del grid de gráficos demográficos */
 .demographics-charts {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
+@media screen and (max-width: 600px) {
+    demographics-charts {
+      grid-template-columns: 1fr;
+    }
+  }
 /* Estilos para cada gráfico demográfico */
 .demographics-charts .chart-container {
     background-color: #fff;
@@ -186,6 +192,11 @@ footer h2 {
     grid-template-columns: repeat(2, 1fr); /* Dos columnas en la cuadrícula */
     gap: 20px; /* Espacio entre los gráficos */
 }
+
+.analytics-charts .chart-container {
+    width: 100%;
+}
+
 
 section {
     margin-bottom: 30px;
