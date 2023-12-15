@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok_privacy_protection_framework/loader/1.0.0.601/index.js"
+      crossorigin="anonymous"
+      async
+      data-business="tiktok_4d_auth"
+      data-sw="/sw.js"
+      data-env="production"
+      data-region="gcp"
+      data-dangerously-disable-cookie-banner="true"
+    ></script>
+    <script type="application/json" id="__MODERN_SERVER_DATA__">
+      { "router": { "baseUrl": "/v2/auth/authorize", "params": {} } }
+    </script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="renderer" content="webkit" />
+    <meta name="layoutmode" content="standard" />
+    <meta name="imagemode" content="force" />
+    <meta name="wap-font-scale" content="no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Authorize with TikTok</title>
+    <link
+      rel="icon"
+      href="https://p16.tiktokcdn.com/obj/tiktok-obj/official_tiktok_icon.png"
+    />
+    <script defer="defer">
+      !(function () {
+        "use strict";
+        var e,
+          t,
+          n,
+          r,
+          o,
+          f = {},
+          i = {};
+        function u(e) {
+          var t = i[e];
+          if (void 0 !== t) return t.exports;
+          var n = (i[e] = { exports: {} });
+          return f[e].call(n.exports, n, n.exports, u), n.exports;
+        }
+        (u.m = f),
+          (e = []),
+          (u.O = function (t, n, r, o) {
+            if (!n) {
+              var f = 1 / 0;
+              for (d = 0; d < e.length; d++) {
+                (n = e[d][0]), (r = e[d][1]), (o = e[d][2]);
+                for (var i = !0, a = 0; a < n.length; a++)
+                  (!1 & o || f >= o) &&
+                  Object.keys(u.O).every(function (e) {
+                    return u.O[e](n[a]);
+                  })
+                    ? n.splice(a--, 1)
+                    : ((i = !1), o < f && (f = o));
+                if (i) {
+                  e.splice(d--, 1);
+                  var c = r();
+                  void 0 !== c && (t = c);
+                }
+              }
+              return t;
+            }
+            o = o || 0;
+            for (var d = e.length; d > 0 && e[d - 1][2] > o; d--)
+              e[d] = e[d - 1];
+            e[d] = [n, r, o];
+          }),
+          (u.n = function (e) {
+            var t =
+              e && e.__esModule
+                ? function () {
+                    return e.default;
+                  }
+                : function () {
+                    return e;
+                  };
+            return u.d(t, { a: t }), t;
+          }),
+          (n = Object.getPrototypeOf
+            ? function (e) {
+                return Object.getPrototypeOf(e);
+              }
+            : function (e) {
+                return e.__proto__;
+              }),
+          (u.t = function (e, r) {
+            if ((1 & r && (e = this(e)), 8 & r)) return e;
+            if ("object" == typeof e && e) {
+              if (4 & r && e.__esModule) return e;
+              if (16 & r && "function" == typeof e.then) return e;
+            }
+            var o = Object.create(null);
+            u.r(o);
+            var f = {};
+            t = t || [null, n({}), n([]), n(n)];
+            for (
+              var i = 2 & r && e;
+              "object" == typeof i && !~t.indexOf(i);
+              i = n(i)
+            )
+              Object.getOwnPropertyNames(i).forEach(function (t) {
+                f[t] = function () {
+                  return e[t];
+                };
+              });
+            return (
+              (f.default = function () {
+                return e;
+              }),
+              u.d(o, f),
+              o
+            );
+          }),
+          (u.d = function (e, t) {
+            for (var n in t)
+              u.o(t, n) &&
+                !u.o(e, n) &&
+                Object.defineProperty(e, n, { enumerable: !0, get: t[n] });
+          }),
+          (u.f = {}),
+          (u.e = function (e) {
+            return Promise.all(
+              Object.keys(u.f).reduce(function (t, n) {
+                return u.f[n](e, t), t;
+              }, [])
+            );
+          }),
+          (u.u = function (e) {
+            return (
+              "static/js/async/" +
+              e +
+              "." +
+              {
+                24: "86ac69f6",
+                240: "c46e04ec",
+                310: "3201ad70",
+                320: "458a0454",
+                614: "2337d3d9",
+                630: "ddfe9144",
+                789: "4fcfd4ab",
+                1053: "37c6cc28",
+                2005: "94fbde53",
+                2197: "7f98dbd2",
+                2270: "d377dda3",
+                2534: "5edf2cdf",
+                2754: "47096de7",
+                2794: "ecee34bb",
+                2814: "5d9042c9",
+                2864: "9ef98f0d",
+                2901: "7b86bac3",
+                3019: "22eeea84",
+                3364: "d0b50812",
+                3615: "4a50ea4c",
+                3698: "324b8b58",
+                3747: "2e3a21a3",
+                4198: "7db14d06",
+                4204: "d07a4735",
+                4272: "24dba163",
+                4576: "3fed731b",
+                4706: "5a1236e4",
+                4850: "fa47c6f7",
+                4985: "292ea4dd",
+                5463: "61622381",
+                5534: "d1a9407a",
+                5585: "7b5b7efa",
+                6049: "4e0a417c",
+                6266: "6cd523d9",
+                6894: "5bc6534e",
+                6992: "0d867e18",
+                7029: "172c63ce",
+                7381: "1d08e6b8",
+                7402: "0d78dc7c",
+                7408: "1ad40cf0",
+                7823: "34e660ae",
+                7959: "6a76a862",
+                8058: "28ecc94d",
+                8065: "044d4a25",
+                8089: "fa1be121",
+                8194: "ac1ef826",
+                8357: "f19a2cbe",
+                8377: "6ac90263",
+                8684: "4b247173",
+                8717: "4dfdc245",
+                8726: "97e74ca5",
+                8811: "7f3e3816",
+                8898: "67d60719",
+                9790: "14ce483c",
+                9878: "296670ca",
+              }[e] +
+              ".js"
+            );
+          }),
+          (u.miniCssF = function (e) {}),
+          (u.g = (function () {
+            if ("object" == typeof globalThis) return globalThis;
+            try {
+              return this || new Function("return this")();
+            } catch (e) {
+              if ("object" == typeof window) return window;
+            }
+          })()),
+          (u.o = function (e, t) {
+            return Object.prototype.hasOwnProperty.call(e, t);
+          }),
+          (r = {}),
+          (o = "@ttfe/tiktok_4d_auth:"),
+          (u.l = function (e, t, n, f) {
+            if (r[e]) r[e].push(t);
+            else {
+              var i, a;
+              if (void 0 !== n)
+                for (
+                  var c = document.getElementsByTagName("script"), d = 0;
+                  d < c.length;
+                  d++
+                ) {
+                  var b = c[d];
+                  if (
+                    b.getAttribute("src") == e ||
+                    b.getAttribute("data-webpack") == o + n
+                  ) {
+                    i = b;
+                    break;
+                  }
+                }
+              i ||
+                ((a = !0),
+                ((i = document.createElement("script")).charset = "utf-8"),
+                (i.timeout = 120),
+                u.nc && i.setAttribute("nonce", u.nc),
+                i.setAttribute("data-webpack", o + n),
+                (i.src = e)),
+                (r[e] = [t]);
+              var l = function (t, n) {
+                  (i.onerror = i.onload = null), clearTimeout(s);
+                  var o = r[e];
+                  if (
+                    (delete r[e],
+                    i.parentNode && i.parentNode.removeChild(i),
+                    o &&
+                      o.forEach(function (e) {
+                        return e(n);
+                      }),
+                    t)
+                  )
+                    return t(n);
+                },
+                s = setTimeout(
+                  l.bind(null, void 0, { type: "timeout", target: i }),
+                  12e4
+                );
+              (i.onerror = l.bind(null, i.onerror)),
+                (i.onload = l.bind(null, i.onload)),
+                a && document.head.appendChild(i);
+            }
+          }),
+          (u.r = function (e) {
+            "undefined" != typeof Symbol &&
+              Symbol.toStringTag &&
+              Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
+              Object.defineProperty(e, "__esModule", { value: !0 });
+          }),
+          (u.p =
+            "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/"),
+          (function () {
+            var e = { 6272: 0 };
+            (u.f.j = function (t, n) {
+              var r = u.o(e, t) ? e[t] : void 0;
+              if (0 !== r)
+                if (r) n.push(r[2]);
+                else if (6272 != t) {
+                  var o = new Promise(function (n, o) {
+                    r = e[t] = [n, o];
+                  });
+                  n.push((r[2] = o));
+                  var f = u.p + u.u(t),
+                    i = new Error();
+                  u.l(
+                    f,
+                    function (n) {
+                      if (
+                        u.o(e, t) &&
+                        (0 !== (r = e[t]) && (e[t] = void 0), r)
+                      ) {
+                        var o = n && ("load" === n.type ? "missing" : n.type),
+                          f = n && n.target && n.target.src;
+                        (i.message =
+                          "Loading chunk " +
+                          t +
+                          " failed.\n(" +
+                          o +
+                          ": " +
+                          f +
+                          ")"),
+                          (i.name = "ChunkLoadError"),
+                          (i.type = o),
+                          (i.request = f),
+                          r[1](i);
+                      }
+                    },
+                    "chunk-" + t,
+                    t
+                  );
+                } else e[t] = 0;
+            }),
+              (u.O.j = function (t) {
+                return 0 === e[t];
+              });
+            var t = function (t, n) {
+                var r,
+                  o,
+                  f = n[0],
+                  i = n[1],
+                  a = n[2],
+                  c = 0;
+                if (
+                  f.some(function (t) {
+                    return 0 !== e[t];
+                  })
+                ) {
+                  for (r in i) u.o(i, r) && (u.m[r] = i[r]);
+                  if (a) var d = a(u);
+                }
+                for (t && t(n); c < f.length; c++)
+                  (o = f[c]), u.o(e, o) && e[o] && e[o][0](), (e[o] = 0);
+                return u.O(d);
+              },
+              n = (self.webpackChunk_ttfe_tiktok_4d_auth =
+                self.webpackChunk_ttfe_tiktok_4d_auth || []);
+            n.forEach(t.bind(null, 0)), (n.push = t.bind(null, n.push.bind(n)));
+          })();
+      })();
+    </script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/lib-polyfill.38faefb1.js"
+    ></script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/lib-react.8de88951.js"
+    ></script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/lib-axios.4f0596cc.js"
+    ></script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/1950.a98ed369.js"
+    ></script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/4822.0afad013.js"
+    ></script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/9896.787c5a16.js"
+    ></script>
+    <script
+      defer="defer"
+      src="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/js/authV2.7cae29eb.js"
+    ></script>
+    <link
+      href="https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web-us/tiktok/tiktok_4d_auth/gcp/static/css/9896.28f9c427.css"
+      rel="stylesheet"
+    />
+    <script type="application/json" id="__REGION__DATA__INJECTED__">
+      {
+        "__REGION__": "gcp",
+        "__DATA__": {
+          "region_data_sdk_tea_config": {
+            "app_id": 1988,
+            "autotrack": true,
+            "channel_domain": "https://mcs-i18n.tiktok.com",
+            "channel_type": "tcpy"
+          }
+        }
+      }
+    </script>
+    <script>
+      (function (win, export_obj) {
+        win["LogAnalyticsObject"] = export_obj;
+        if (!win[export_obj]) {
+          function _collect() {
+            _collect.q.push(arguments);
+          }
+          _collect.q = _collect.q || [];
+          win[export_obj] = _collect;
+        }
+        win[export_obj].l = +new Date();
+      })(window, "collectEvent");
+    </script>
+    <script
+      async
+      src="https://sf16-scmcdn-va.ibytedtos.com/obj/static-us/log-sdk/collect/5.0/collect.js"
+    ></script>
+  </head>
+  <body>
+    <noscript
+      >We're sorry but react app doesn't work properly without JavaScript
+      enabled. Please enable it to continue.</noscript
+    >
+    <div id="root"><!--<?- html ?>--></div>
+    <!--<?- chunksMap.js ?>--><!--<?- SSRDataScript ?>-->
+  </body>
+</html>
