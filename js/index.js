@@ -60,9 +60,8 @@ $(document).ready(function () {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
-  let c =
-    "GtywH-rH3x0zV9M5GSPf2vXJDaUrylT2P4GdqulRpKOBh0IXjkD8LM-xN424i1B_KV2jV49ePnP5TCJfxyf859rs2vKdH6ZTwl-DW15Cg-r3T-Uenioyea-bzJ7-P2Jf0pfdvWdwapdhyoFRlQNvZnqMu_q-Anfx4n4qpzVeoS5vTZJhUnp-DrvIWrruQoUE*3!4857.e1";
-  let url = `${SERVER_URL}login/token?code=${c}`;
+
+  let url = `${SERVER_URL}login/token?code=${code}`;
   console.log(url);
   let reponse = fetchData(url, options, null);
   reponse.then((r) =>
