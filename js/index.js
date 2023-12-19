@@ -7,12 +7,13 @@ import {
   queryAdReportResponse,
   queryCommercialContentResponse,
 } from "./fakedata.js";
+
 const options = {
   method: "GET",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    //Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
   },
   /*JSON.stringify({
     client_id: "(API KEY)",
