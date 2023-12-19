@@ -60,7 +60,23 @@ $(document).ready(function () {
   const code = urlParams.get("code");
   console.log(code);
   var fieldsSelected = [];
+  var fieldsSelected = [];
 
+  const fields = [
+    "ad.id",
+    "ad.first_shown_date",
+    "ad.last_shown_date",
+    "ad.status",
+    "ad.status_statement",
+    "ad.videos",
+    "ad.image_urls",
+    "ad.reach",
+    "advertiser.business_id",
+    "advertiser.business_name",
+    "advertiser.paid_for_by",
+  ];
+  createFieldsCheckbox(fields, "ads");
+  createFieldsRange(50, "ads");
   /* Query User Info - Display API */
   $("#queryUser__boton--buscar").on("click", () => {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
@@ -255,7 +271,7 @@ $(document).ready(function () {
 
 const fetchData = (url, options, fakeJson) => {
   return fetch(url, options)
-    .then((res) => res.json)
+    .then((res) => res.data)
     .then(() => fakeJson);
 };
 
