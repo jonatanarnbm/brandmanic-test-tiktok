@@ -103,7 +103,7 @@ $(document).ready(function () {
         ","
       )}`,{
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`
+          Authorization: `Bearer act.3ZEelu3S3fH8Qmz8TvI14i88m35l5V1i8TnMUl8haXMbeXxnxkpAY8hAgXOU!4765.e1`
         }
       }
     );
