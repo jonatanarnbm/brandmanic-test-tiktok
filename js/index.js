@@ -9,6 +9,10 @@ import {
 } from "./fakedata.js";
 
 const options = {
+  headers: {Authorization: `Bearer ${token}`}
+}
+
+/*const options = {
   method: "GET",
   headers: {
     Accept: "application/json",
@@ -20,8 +24,8 @@ const options = {
     client_secret: "(API SECRET)",
     grant_type: "client_credentials",
   }),
-  */
-};
+  
+};*/
 
 var getFieldsClass = (clase) => {
   return $(clase)
