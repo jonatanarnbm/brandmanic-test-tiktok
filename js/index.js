@@ -102,7 +102,7 @@ $(document).ready(function () {
       `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
         ","
       )}`,{
-          Authorization: access_tokenFetch,
+          Authorization: 'Bearer '+access_tokenFetch,
         }
     );
 
