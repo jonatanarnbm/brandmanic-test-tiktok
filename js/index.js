@@ -55,7 +55,8 @@ export function redirectToTikTok() {
 }
 
 $(document).ready(function () {
-  const urlParams = new URLSearchParams(window.location.search);
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
   console.log(code);
   var fieldsSelected = [];
