@@ -38,12 +38,12 @@ router.get("/token", async function (req, res, next) {
 });
 
 router.get("/test", async function (req, res, next) {
+  let token = "Bearer " + req.query.token;
   let test = await fetch(
     "https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url",
     {
       headers: {
-        Authorization:
-          "Bearer act.bwt9WmjHcKlCdhcewzbTvf1Y4zgNTKHH2jFd13fg4i42QRpIXixTfHRCDrGq!4791.e1",
+        Authorization: token,
       },
     }
   );
