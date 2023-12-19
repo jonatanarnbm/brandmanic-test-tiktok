@@ -102,13 +102,12 @@ $(document).ready(function () {
       `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
         ","
       )}`,{
-        headers: {
-          Authorization: `Bearer act.3ZEelu3S3fH8Qmz8TvI14i88m35l5V1i8TnMUl8haXMbeXxnxkpAY8hAgXOU!4765.e1`
+          Authorization: token,
         }
-      }
     );
 
     UserData.then((res) => renderUserData(res));
+
   });
 
   $("#iniTikTok").on("click", redirectToTikTok);
