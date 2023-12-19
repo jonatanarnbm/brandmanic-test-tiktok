@@ -99,8 +99,8 @@ $(document).ready(function () {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
     let UserData = fetch(`http://localhost:3000/login/test?fields=${fieldsSelected.join(",")}&token=${localStorage.getItem('access_token')}`)
       
-    //UserData.json().then((j) => renderUserData(res.json(j)));
-    UserData.then((res) => renderUserData(res));
+    UserData.json().then((j) => renderUserData(res.json(j)));
+    //UserData.then((res) => renderUserData(res));
 
   });
 
