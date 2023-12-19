@@ -66,7 +66,7 @@ $(document).ready(function () {
   let reponse = fetchData(url, options, null);
   reponse.then((r) =>
     r.json().then((data) => {
-      if (data.tokeaccess_tokenn != null) {
+      if (data.access_token != null) {
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("expires_in", data.expires_in);
         localStorage.setItem("refresh_expires_in", data.refresh_expires_in);
