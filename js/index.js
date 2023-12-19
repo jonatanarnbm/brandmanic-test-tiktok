@@ -97,12 +97,12 @@ $(document).ready(function () {
   /* Query User Info - Display API */
   $("#queryUser__boton--buscar").on("click", () => {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
-    var access_tokenFetch = localStorage.getItem('access_token')
+    var access_tokenFetch = 'Bearer '+localStorage.getItem('access_token')
     let UserData = fetch(
       `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
         ","
       )}`,{
-          Authorization: 'Bearer '+access_tokenFetch,
+          Authorization: access_tokenFetch,
         }
     );
 
