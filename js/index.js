@@ -554,7 +554,7 @@ function createFieldsCheckbox(fields, query) {
   }
   select += `</select></div>`;
   $(`#fields_${query}Container`).append(select);
-  $(`#${query}`).select2();
+  $(`#${query}`).select();
 }
 
 function createFieldsRange(max, query) {
