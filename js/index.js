@@ -102,7 +102,9 @@ $(document).ready(function () {
       `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
         ","
       )}`,{
-        headers: {Authorization: `Bearer ${localStorage.getItem('access_token')}`}
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`
+        }
       }
     );
     UserData.then((res) => renderUserData(res));
