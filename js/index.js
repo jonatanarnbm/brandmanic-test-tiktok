@@ -68,7 +68,7 @@ $(document).ready(function () {
     r.json().then((data) => {
       console.log(data);
 
-      localStorage.setItem("tokenData", data);
+      localStorage.setItem("tokenData", { ...data });
       if (data.token != null) {
         localStorage.setItem("token", data.token);
       }
