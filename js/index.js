@@ -24,68 +24,84 @@ const options = {
   */
 };
 
+var getFieldsClass = (clase) => {
+  return $(clase)
+    .map(function () {
+      if (this.checked) {
+        return this.name;
+      }
+    })
+    .get();
+};
+
+export function redirectToTikTok() {
+  // Simula una solicitud al servidor cuando se hace clic en el botón
+  fetch("https://cuddly-meme-5ggvgvvqrx642vr9j-5500.app.github.dev/oauth") // La ruta debe coincidir con tu ruta existente en el servidor
+    .then((response) => {
+      if (response.ok) {
+        // Redirige al usuario a la URL generada por el servidor
+        return response.text();
+      } else {
+        throw new Error("Error al iniciar sesión con TikTok");
+      }
+    })
+    .then((url) => {
+      window.location.href = url;
+    })
+    .catch((error) => {
+      console.error(error);
+      // Maneja el error según sea necesario
+    });
+}
+
 $(document).ready(function () {
   var fieldsSelected = [];
-  const fields = [
-    "ad.id",
-    "ad.first_shown_date",
-    "ad.last_shown_date",
-    "ad.status",
-    "ad.status_statement",
-    "ad.videos",
-    "ad.image_urls",
-    "ad.reach",
-    "advertiser.business_id",
-    "advertiser.business_name",
-    "advertiser.paid_for_by",
-  ];
-  createFieldsCheckbox(fields, "ads");
-  createFieldsRange(50, "ads");
-  let UserData = fetchData(
-    "https://open.tiktokapis.com/v2/user/info/",
-    options,
-    queryUserInfoResponse
-  );
-  UserData.then((res) => renderUserData(res));
 
-  /* ListVideos */
-  var maxVideos = 10;
+  /* Query User Info - Display API */
+  $("#queryUser__boton--buscar").on("click", () => {
+    fieldsSelected = getFieldsClass(".fieldUser__checkbox");
 
-  $("#idsVideos__boton--buscar").on("click", () => {
-    fieldsSelected = $(".field__checkbox")
-      .map(function () {
-        if (this.checked) {
-          return this.name;
-        }
-      })
-      .get();
-
-    let videoData = fetchData(
-      `https://open.tiktokapis.com/v2/video/list/?fields=${fieldsSelected.join(
+    let UserData = fetchData(
+      `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
         ","
       )}`,
       options,
-      queryVideosResponse
+      queryUserInfoResponse
     );
-    videoData.then((res) => renderVideoData(res));
+    UserData.then((res) => renderUserData(res));
   });
 
-  $("#listVideos__input").on("click", () => {
-    maxVideos = $("#listVideos__input").val();
-    $("#listVideos__numero").text(maxVideos);
+  $("#iniTikTok").on("click", redirectToTikTok);
+
+  /* Query User Info - Research API */
+  $("#queryUserR__boton--buscar").on("click", () => {
+    let usernameQueryUserInfoResearch = $("#queryUserR__input").val().trim();
+
+    if (usernameQueryUserInfoResearch == "") return;
+
+    fieldsSelected = getFieldsClass(".fieldUser__checkbox");
+
+    alert(usernameQueryUserInfoResearch);
+
+    let UserData = fetchData(
+      `https://open.tiktokapis.com/v2/research/user/info/?fields=${fieldsSelected.join(
+        ","
+      )}`,
+      options,
+      queryUserInfoResponse
+    );
+    UserData.then((res) => renderUserData(res));
   });
 
-  /* Query Videos */
+  /* Query Videos - Display API */
   var videosIDS = [];
 
-  $("#listVideos__boton--buscar").on("click", () => {
-    fieldsSelected = $(".field__checkbox")
-      .map(function () {
-        if (this.checked) {
-          return this.name;
-        }
-      })
-      .get();
+  $("#queryVideos__boton--buscar").on("click", () => {
+    if (videosIDS.length == []) return;
+
+    fieldsSelected = getFieldsClass(".fieldVideo__checkbox");
+
+    alert("Videos: " + videosIDS);
 
     let videoData = fetchData(
       `https://open.tiktokapis.com/v2/video/query/?fields=${fieldsSelected.join(
@@ -97,30 +113,116 @@ $(document).ready(function () {
     videoData.then((res) => renderVideoData(res));
   });
 
-  $("#idsVideos__boton--anyadir").on("click", () => {
+  $("#queryVideos__boton--anyadir").on("click", () => {
     if (
-      videosIDS.indexOf($("#idsVideos__input").val()) == -1 &&
-      $("#idsVideos__input").val().trim() != ""
+      videosIDS.indexOf($("#queryVideos__input").val()) == -1 &&
+      $("#queryVideos__input").val().trim() != ""
     ) {
-      videosIDS.push($("#idsVideos__input").val());
+      videosIDS.push($("#queryVideos__input").val().trim());
       pintaIds(videosIDS);
-      $("#idsVideos__input").val("");
+      $("#queryVideos__input").val("");
     }
   });
 
-  $("#idsVideos__boton--limpiar").on("click", () => {
+  $("#queryVideos__boton--limpiar").on("click", () => {
     videosIDS = [];
-    $("#idsVideos__list").empty();
-    $("#idsVideos__input").val("");
+    $("#queryVideos__list").empty();
+    $("#queryVideos__input").val("");
   });
 
   const pintaIds = (videosIDS) => {
-    $("#idsVideos__list").empty();
-    videosIDS.map((e) => $("#idsVideos__list").append(`<li>${e}.</span>`));
+    $("#queryVideos__list").empty();
+    videosIDS.map((e) => $("#queryVideos__list").append(`<li>${e}.</span>`));
   };
 
-  let videoData = fetchData("fake", options, queryVideosResponse);
-  videoData.then((res) => renderVideoData(res));
+  /* Query Videos - Research API */
+
+  $("#queryVideosR__boton--buscar").on("click", () => {
+    var queryQueryVideosResearch = $("#queryVideosR__input--query")
+      .val()
+      .trim();
+    var start_dateQueryVideosResearch = $(
+      "#queryVideosR__input--start_date"
+    ).val();
+    var max_countQueryVideosResearch = $(
+      "#queryVideosR__input--max_count"
+    ).val();
+    var cursorQueryVideosResearch = $("#queryVideosR__input--cursor").val();
+    var search_idQueryVideosResearch = $(
+      "#queryVideosR__input--search_id"
+    ).val();
+    var is_randomQueryVideosResearch = $("#queryVideosR__input--is_random").is(
+      ":checked"
+    );
+
+    alert(`
+      queryQueryVideosResearch: ${queryQueryVideosResearch}
+      start_dateQueryVideosResearch: ${start_dateQueryVideosResearch}
+      max_countQueryVideosResearch: ${max_countQueryVideosResearch}
+      cursorQueryVideosResearch: ${cursorQueryVideosResearch}
+      search_idQueryVideosResearch: ${search_idQueryVideosResearch}
+      is_randomQueryVideosResearch: ${is_randomQueryVideosResearch}
+    `);
+
+    let videoData = fetchData(
+      `https://open.tiktokapis.com/v2/research/video/query/?fields=${fieldsSelected.join(
+        ","
+      )}`,
+      options,
+      queryVideosResponse
+    );
+    videoData.then((res) => renderVideoData(res));
+  });
+
+  /* ListVideos - Display API */
+  var maxVideos = 10;
+  var cursorValue = 0;
+  $("#listVideos__boton--buscar").on("click", () => {
+    cursorValue = $("#listVideos__input--cursor").val();
+
+    alert("Videos: " + maxVideos + ". Cursor: " + cursorValue);
+
+    let videoData = fetchData(
+      `https://open.tiktokapis.com/v2/video/list/?fields=${fieldsSelected.join(
+        ","
+      )}`,
+      options,
+      queryVideosResponse
+    );
+    videoData.then((res) => renderVideoData(res));
+  });
+
+  $("#listVideos__input").on("input", () => {
+    maxVideos = $("#listVideos__input").val();
+    $("#listVideos__numero").text(maxVideos);
+  });
+
+  /* Query Videos Comments - Research API */
+
+  $("#queryVideoComments__boton--buscar").on("click", () => {
+    var idQueryVideoComments = $("#queryVideoComments__input--id").val().trim();
+    var max_countQueryVideoComments = $(
+      "#queryVideoComments__input--max_count"
+    ).val();
+    var cursorQueryVideoComments = $(
+      "#queryVideoComments__input--cursor"
+    ).val();
+
+    alert(`
+      idQueryVideoComments: ${idQueryVideoComments} 
+      max_countQueryVideoComments: ${max_countQueryVideoComments} 
+      cursorQueryVideoComments: ${cursorQueryVideoComments} 
+      `);
+
+    let videoData = fetchData(
+      `https://open.tiktokapis.com/v2/research/video/comment/list/?fields=${fieldsSelected.join(
+        ","
+      )}`,
+      options,
+      queryVideosResponse
+    );
+    videoData.then((res) => renderVideoData(res));
+  });
 
   //https://open.tiktokapis.com/v2/research/adlib/ad/query/
   let adData = fetchData("", options, queryAdsResponse);
@@ -170,90 +272,30 @@ const renderUserData = (json) => {
 };
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
-  tablaVideos.html(
-    `<tr style="border: 1px solid black; padding: 0.5rem"><th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">id</th><th id="tablaVideos__th--create_time" style="background-color: #000000; color: white; padding: 0.5rem">create_time</th><th id="tablaVideos__th--cover_image_url" style="background-color: #000000; color: white; padding: 0.5rem">cover_image_url</th><th id="tablaVideos__th--share_url" style="background-color: #000000; color: white; padding: 0.5rem">share_url</th><th id="tablaVideos__th--video_description"style="background-color: #000000; color: white; padding: 0.5rem">video_description</th><th id="tablaVideos__th--duration" style="background-color: #000000; color: white; padding: 0.5rem">duration</th><th id="tablaVideos__th--height" style="background-color: #000000; color: white; padding: 0.5rem">height</th><th id="tablaVideos__th--width" style="background-color: #000000; color: white; padding: 0.5rem">width</th><th id="tablaVideos__th--title" style="background-color: #000000; color: white; padding: 0.5rem">title</th><th id="tablaVideos__th--embed_html" style="background-color: #000000; color: white; padding: 0.5rem">embed_html</th><th id="tablaVideos__th--embed_link" style="background-color: #000000; color: white; padding: 0.5rem">embed_link</th><th id="tablaVideos__th--like_count" style="background-color: #000000; color: white; padding: 0.5rem">like_count</th><th id="tablaVideos__th--comment_count" style="background-color: #000000; color: white; padding: 0.5rem">comment_count</th><th id="tablaVideos__th--share_count" style="background-color: #000000; color: white; padding: 0.5rem">share_count</th><th id="tablaVideos__th--view_count" style="background-color: #000000; color: white; padding: 0.5rem">view_count</th></tr>`
-  );
+  tablaVideos.children().remove();
+
+  var primera = true;
+
   for (const video of json.data.videos) {
-    let html = `
-      <tr style="border: 1px solid black;padding: .5rem;">
-            ${
-              video.id
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.id}</td>`
-                : $("#tablaVideos__th--id").remove()
-            }
-            ${
-              video.create_time
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.create_time}</td>`
-                : $("#tablaVideos__th--create_time").remove()
-            }
-            ${
-              video.cover_image_url
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.cover_image_url}</td>`
-                : $("#tablaVideos__th--cover_image_url").remove()
-            }
-            ${
-              video.share_url
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.share_url}</td>`
-                : $("#tablaVideos__th--share_url").remove()
-            }
-            ${
-              video.video_description
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.video_description}</td>`
-                : $("#tablaVideos__th--video_description").remove()
-            }
-            ${
-              video.duration
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.duration}</td>`
-                : $("#tablaVideos__th--duration").remove()
-            }
-            ${
-              video.height
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.height}</td>`
-                : $("#tablaVideos__th--height").remove()
-            }
-            ${
-              video.width
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.width}</td>`
-                : $("#tablaVideos__th--width").remove()
-            }
-            ${
-              video.title
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.title}</td>`
-                : $("#tablaVideos__th--title").remove()
-            }
-            ${
-              video.embed_html
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.embed_html}</td>`
-                : $("#tablaVideos__th--embed_html").remove()
-            }
-            ${
-              video.embed_link
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.embed_link}</td>`
-                : $("#tablaVideos__th--embed_link").remove()
-            }
-            ${
-              video.like_count
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.like_count}</td>`
-                : $("#tablaVideos__th--like_count").remove()
-            }
-            ${
-              video.comment_count
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.comment_count}</td>`
-                : $("#tablaVideos__th--comment_count").remove()
-            }
-            ${
-              video.share_count
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.share_count}</td>`
-                : $("#tablaVideos__th--share_count").remove()
-            }
-            ${
-              video.view_count
-                ? `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video.view_count}</td>`
-                : $("#tablaVideos__th--view_count").remove()
-            }
-      </tr>
-    `;
-    tablaVideos.append(html);
+    if (primera) {
+      $("#contenido__api--tablaVideos").append(
+        `<tr style="border: 1px solid black;padding: .5rem;"></tr>`
+      );
+      for (const campo in video) {
+        $("#contenido__api--tablaVideos tr").append(
+          `<th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">${campo}</th>`
+        );
+      }
+      primera = false;
+    }
+    tablaVideos.append(
+      `<tr style="border: 1px solid black;padding: .5rem;"></tr>`
+    );
+    for (const campo in video) {
+      $("#contenido__api--tablaVideos tr:last-child").append(
+        `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video[campo]}</td>`
+      );
+    }
   }
 };
 
