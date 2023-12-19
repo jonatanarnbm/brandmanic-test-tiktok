@@ -97,7 +97,7 @@ $(document).ready(function () {
   /* Query User Info - Display API */
   $("#queryUser__boton--buscar").on("click", () => {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
-    let UserData = fetch(`http://localhost:3000/test`, {
+    let UserData = fetch(`http://localhost:3000/login/test`, {
       fields: fieldsSelected,
       token:localStorage.getItem('access_token')
     })
