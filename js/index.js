@@ -107,6 +107,7 @@ $(document).ready(function () {
         }
       }
     );
+    sessionStorage.setItem('borrame',res)
     UserData.then((res) => renderUserData(res));
   });
 
