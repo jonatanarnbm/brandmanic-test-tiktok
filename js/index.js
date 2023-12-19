@@ -66,7 +66,9 @@ $(document).ready(function () {
   let reponse = fetchData(url, options, null);
   reponse.then((r) =>
     r.json().then((data) => {
-      console.log(data);
+      if (data.token != null) {
+        localStorage.setItem("tokenData", data.token);
+      }
     })
   );
 
