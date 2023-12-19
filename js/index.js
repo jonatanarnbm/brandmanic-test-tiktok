@@ -98,17 +98,14 @@ $(document).ready(function () {
   $("#queryUser__boton--buscar").on("click", () => {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
     var access_tokenFetch = "Bearer "+localStorage.getItem('access_token')
-    let UserData = fetch(
-      `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(",")}`,
-      {
-        headers:{
-          Authorization: access_tokenFetch,
-        },
-      },
+    let UserData = fetch("https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url", {
+      headers: {
+        Authorization: access_tokenFetch
+      }
+    })
       
-    );
-    UserData.json().then((j) => renderUserData(res.json(j)));
-    //UserData.then((res) => renderUserData(res));
+    //UserData.json().then((j) => renderUserData(res.json(j)));
+    UserData.then((res) => renderUserData(res));
 
   });
 
