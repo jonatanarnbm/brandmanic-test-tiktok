@@ -9,23 +9,19 @@ import {
 } from "./fakedata.js";
 
 const options = {
-  headers: {Authorization: `Bearer ${access_token}`}
-}
-
-/*const options = {
   method: "GET",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+    //Authorization: `Bearer ${token}`,
   },
   /*JSON.stringify({
     client_id: "(API KEY)",
     client_secret: "(API SECRET)",
     grant_type: "client_credentials",
   }),
-  
-};*/
+  */
+};
 
 var getFieldsClass = (clase) => {
   return $(clase)
