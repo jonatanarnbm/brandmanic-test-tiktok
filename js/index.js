@@ -8,14 +8,12 @@ import {
   queryCommercialContentResponse,
 } from "./fakedata.js";
 const options = {
-  method: "POST",
+  method: "GET",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
     //Authorization: `Bearer ${token}`,
-    Authorization: `Bearer 123`,
   },
-  body: "",
   /*JSON.stringify({
     client_id: "(API KEY)",
     client_secret: "(API SECRET)",
@@ -53,12 +51,26 @@ export function redirectToTikTok() {
       // Maneja el error según sea necesario
     });
 }
+const SERVER_URL = "http://localhost:3000/";
+const fetchData = (url, options, fakeJson) => {
+  return fetch(url, options);
+};
 
 $(document).ready(function () {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
-  console.log(code);
+  let c =
+    "GtywH-rH3x0zV9M5GSPf2vXJDaUrylT2P4GdqulRpKOBh0IXjkD8LM-xN424i1B_KV2jV49ePnP5TCJfxyf859rs2vKdH6ZTwl-DW15Cg-r3T-Uenioyea-bzJ7-P2Jf0pfdvWdwapdhyoFRlQNvZnqMu_q-Anfx4n4qpzVeoS5vTZJhUnp-DrvIWrruQoUE*3!4857.e1";
+  let url = `${SERVER_URL}login/token?code=${c}`;
+  console.log(url);
+  let reponse = fetchData(url, options, null);
+  reponse.then((r) =>
+    r.json().then((data) => {
+      console.log(data);
+    })
+  );
+
   var fieldsSelected = [];
   var fieldsSelected = [];
 
@@ -268,12 +280,6 @@ $(document).ready(function () {
   );
   commercialContentData.then((res) => renderCommercialContentData(res));
 });
-
-const fetchData = (url, options, fakeJson) => {
-  return fetch(url, options)
-    .then((res) => res.data)
-    .then(() => fakeJson);
-};
 
 const renderUserData = (json) => {
   $("#open_id--data").text(json["open_id"]);
