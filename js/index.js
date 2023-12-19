@@ -9,7 +9,7 @@ import {
 } from "./fakedata.js";
 
 const options = {
-  headers: {Authorization: `Bearer ${token}`}
+  headers: {Authorization: `Bearer ${access_token}`}
 }
 
 /*const options = {
