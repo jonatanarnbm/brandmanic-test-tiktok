@@ -99,11 +99,13 @@ $(document).ready(function () {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
     var access_tokenFetch = 'Bearer '+localStorage.getItem('access_token')
     let UserData = fetch(
-      `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(
-        ","
-      )}`,{
+      `https://open.tiktokapis.com/v2/user/info/?fields=${fieldsSelected.join(",")}`,
+      {
+        headers:{
           Authorization: access_tokenFetch,
-        }
+        },
+      },
+      
     );
 
     UserData.then((res) => renderUserData(res));
