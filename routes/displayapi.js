@@ -2,15 +2,14 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/user", async function (req, res, next) {
-  let token = "Bearer " + req.query.token;
-  let fields = req.query.fields;
-  let url = "https://open.tiktokapis.com/v2/user/info/";
+  const { fields, token } = req.query;
 
+  let url = "https://open.tiktokapis.com/v2/user/info/";
   url += "?fields=" + fields.toString();
-  console.log(url);
+
   let test = await fetch(url, {
     headers: {
-      Authorization: token,
+      Authorization: "Bearer " + token,
     },
   });
 
