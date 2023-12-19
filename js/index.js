@@ -107,8 +107,8 @@ $(document).ready(function () {
       },
       
     );
-
-    UserData.then((res) => renderUserData(res));
+    UserData.json().then((j) => renderUserData(res.json(j)));
+    //UserData.then((res) => renderUserData(res));
 
   });
 
