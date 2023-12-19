@@ -66,11 +66,11 @@ $(document).ready(function () {
   let reponse = fetchData(url, options, null);
   reponse.then((r) =>
     r.json().then((data) => {
-      console.log(data);
-
-      localStorage.setItem("tokenData", { ...data });
-      if (data.token != null) {
-        localStorage.setItem("token", data.token);
+      if (data.tokeaccess_tokenn != null) {
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("expires_in", data.expires_in);
+        localStorage.setItem("refresh_expires_in", data.refresh_expires_in);
+        localStorage.setItem("refresh_token", data.refresh_token);
       }
     })
   );
