@@ -104,7 +104,7 @@ $(document).ready(function () {
   /* Query User Info - Display API */
   $("#queryUser__boton--buscar").on("click", () => {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
-    let UserData = fetch(`http://localhost:3000/login/test?fields=${fieldsSelected.join(",")}&token=${localStorage.getItem('access_token')}`)
+    let UserData = fetch(`http://localhost:3000/displaydata/user/?fields=${fieldsSelected.join(",")}&token=${localStorage.getItem('access_token')}`)
       
     UserData.json().then((j) => renderUserData(res.json(j)));
     //UserData.then((res) => renderUserData(res));
