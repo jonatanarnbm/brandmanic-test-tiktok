@@ -294,7 +294,7 @@ const renderUserData = (json) => {
   $("#open_id--data").text(json['data']['user']["open_id"]);
   $("#union_id--data").text(json['data']['user']["union_id"]);
   $("#avatar_url--data").text(json['data']['user']["avatar_url"]);
-  $("#avatar_url100--data").text(json['data']['user']["avatar_url100"]);
+  $("#avatar_url100--data").text(json['data']['user']["avatar_url_100"]);
   $("#avatar_large_url--data").text(json['data']['user']["avatar_large_url"]);
   $("#display_name--data").text(json['data']['user']["display_name"]);
   $("#bio_description--data").text(json['data']['user']["bio_description"]);
