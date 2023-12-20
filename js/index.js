@@ -293,13 +293,13 @@ $(document).ready(function () {
 const renderUserData = (json) => {
   $("#open_id--data").text(json['data']['user']["open_id"]);
   $("#union_id--data").text(json['data']['user']["union_id"]);
-  $("#avatar_url--data").append(`<a href="${json['data']['user']["avatar_url"]}">${json['data']['user']["avatar_url"]}</a>`);
-  $("#avatar_url100--data").append(`<a href="${json['data']['user']["avatar_url_100"]}">${json['data']['user']["avatar_url_100"]}</a>`);
-  $("#avatar_large_url--data").append(`<a href="${json['data']['user']["avatar_large_url"]}">${json['data']['user']["avatar_large_url"]}</a>` );
+  $("#avatar_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url"]}">${json['data']['user']["avatar_url"]}</a>`);
+  $("#avatar_url100--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url_100"]}">${json['data']['user']["avatar_url_100"]}</a>`);
+  $("#avatar_large_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_large_url"]}">${json['data']['user']["avatar_large_url"]}</a>` );
   $("#display_name--data").text(json['data']['user']["display_name"]);
   $("#bio_description--data").text(json['data']['user']["bio_description"]);
   $("#video_count--data").text(json['data']['user']["video_count"]);
-  $("#profile_deep_link--data").append(`<a href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}</a>`);
+  $("#profile_deep_link--data").append(`<a target="_blank" href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}</a>`);
   $("#is_verified--data").text(json['data']['user']["is_verified"]);
   $("#follower_count--data").text(json['data']['user']["follower_count"]);
   $("#likes_count--data").text(json['data']['user']["likes_count"]);
