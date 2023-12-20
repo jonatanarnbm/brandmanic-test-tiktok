@@ -107,7 +107,8 @@ $(document).ready(function () {
     let UserData = fetch(`http://localhost:3000/displaydata/user/?fields=${fieldsSelected.join(",")}&token=${localStorage.getItem('access_token')}`)
       
     //UserData.json().then((j) => renderUserData(res.json(j)));
-    UserData.then((res) => renderUserData(res));
+    .then((res) => res.json())
+    .then(data => renderUserData(data));
 
   });
 
