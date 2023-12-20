@@ -318,7 +318,7 @@ const renderVideoData = (json) => {
       );
       for (const campo in video) {
         $("#contenido__api--tablaVideos tr").append(
-          `<th id="tablaVideos__th--id" style="background-color: #000000; color: white; padding: 0.5rem">${campo}</th>`
+          `<th id="tablaVideos__th--id" style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">${campo}</th>`
         );
       }
       primera = false;
@@ -346,7 +346,7 @@ const renderAdData = (json) => {
 
     for (const key in ad) {
       if (!once) {
-        th += `<th style="background-color: #000000; color: white; padding: 0.5rem">${key}</th>`;
+        th += `<th style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">${key}</th>`;
       }
       if (key == "videos") {
         td += tdMockup;
@@ -369,7 +369,7 @@ const renderAdData = (json) => {
     }
     for (const key in advertiser) {
       if (!once) {
-        th += `<th style="background-color: #000000; color: white; padding: 0.5rem">${key}</th>`;
+        th += `<th style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">${key}</th>`;
       }
       td += tdMockup + advertiser[key] + tdMockupEnd;
     }
@@ -394,7 +394,7 @@ const renderAdvertiserData = (json) => {
   for (const adv of advs) {
     for (const key in adv) {
       if (!once) {
-        th += `<th style="background-color: #000000; color: white; padding: 0.5rem">${key}</th>`;
+        th += `<th style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">${key}</th>`;
       }
       td += tdMockup + adv[key] + tdMockupEnd;
     }
@@ -414,7 +414,7 @@ const renderAdDetailData = (json) => {
   let td = `<tr style="border: 1px solid black;padding: .5rem;">`;
   let tdMockup = `<td style="border: 1px solid black;padding: .5rem;">`;
   let tdMockupEnd = `</td>`;
-  let thMockup = `<th style="background-color: #000000; color: white; padding: 0.5rem">`;
+  let thMockup = `<th style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">`;
   let thMockupEnd = `</th>`;
   let { ad, ad_group, advertiser } = json.data;
 
@@ -492,7 +492,7 @@ const renderAdReportData = (json) => {
   let report = json.data.count_time_series_by_country;
 
   for (const key in report) {
-    th += `<th style="background-color: #000000; color: white; padding: 0.5rem">${key}</th>`;
+    th += `<th style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">${key}</th>`;
     let text = "";
     for (let data of report[key]) {
       text += data.date + " " + data.count + " </br>";
@@ -511,7 +511,7 @@ const renderCommercialContentData = (json) => {
   let td = `<tr style="border: 1px solid black;padding: .5rem;">`;
   let tdMockup = `<td style="border: 1px solid black;padding: .5rem;">`;
   let tdMockupEnd = `</td>`;
-  let thMockup = `<th style="background-color: #000000; color: white; padding: 0.5rem">`;
+  let thMockup = `<th style="background-color: #000000;color: white;min-width: 10rem;padding: 0.5rem">`;
   let thMockupEnd = `</th>`;
   let commercialcontents = json.data.commercial_contents;
   for (let cc of commercialcontents) {
