@@ -10,8 +10,6 @@
 </style>
 </head>
  
- 
- 
 <body>
   <header>
     <nav style="
@@ -47,7 +45,15 @@
             gap: 2rem;
           ">
           <div style="display:flex;align-items: center;gap:.2rem;font-weight: bold;width: 70%;align-items: flex-start;flex-direction: column;padding: 0 5rem;">
-            <div style="display: flex;width:100%;gap:1rem"><label for="input_code">CODE:</label><input type="text" name="input_code" id="input_code" style="width:100%;"></div>
+            <div style="display: flex;">
+              <span style="font-weight: bold;">expires_in:&nbsp;</span><span style="font-weight: 100;" id="expires_in">asdasdasasasd</span>
+            </div>
+            <div style="display: flex;">
+              <span style="font-weight: bold;">refresh_token:&nbsp;</span><span style="font-weight: 100;" id="refresh_token">asdasdasasasd</span>
+            </div>
+            <div style="display: flex;">
+              <span style="font-weight: bold;">refresh_expires_in:&nbsp;</span><span style="font-weight: 100;" id="refresh_expires_in">asdasdasasasd</span>
+            </div>
             <div style="display: flex;">
               <span style="font-weight: bold;">access_token:&nbsp;</span><span style="font-weight: 100;" id="access_token">asdasdasasasd</span>
             </div>
@@ -164,9 +170,7 @@ It is possible that the API returns less videos than the max count due to reason
                           src="https://cdn-icons-png.flaticon.com/512/25/25400.png" alt="ask icon"
                           style="height: .9rem;width:.9rem;">:</label><input
                         onkeyup="if(this.value > 100) this.value = null;" type="number"
-                        name="queryVideosR__input--maxcount" id="queryVideosR__input--maxcount" style="
-    flex-grow: 1;
-" value="20" max="100">
+                        name="queryVideosR__input--maxcount" id="queryVideosR__input--maxcount" style="flex-grow: 1;" value="20" max="100">
                     </div>
                     <div style="display: flex;gap: .5rem;">
                       <label for="queryVideosR__input--cursor">cursor <img

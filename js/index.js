@@ -23,6 +23,13 @@ const options = {
   */
 };
 
+
+/* Dashboard representación token */
+$('#access_token').text(localStorage.getItem("access_token"));
+$('#expires_in').text(localStorage.getItem("expires_in"));
+$('#refresh_expires_in').text(localStorage.getItem("refresh_expires_in"));
+$('#refresh_token').text(localStorage.getItem("refresh_token"));
+
 var getFieldsClass = (clase) => {
   return $(clase)
     .map(function () {
