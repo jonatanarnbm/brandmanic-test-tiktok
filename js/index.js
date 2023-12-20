@@ -291,19 +291,19 @@ $(document).ready(function () {
 });
 
 const renderUserData = (json) => {
-  $("#open_id--data").text(json[0]["open_id"]);
-  $("#union_id--data").text(json[0]["union_id"]);
-  $("#avatar_url--data").text(json[0]["avatar_url"]);
-  $("#avatar_url100--data").text(json[0]["avatar_url100"]);
-  $("#avatar_large_url--data").text(json[0]["avatar_large_url"]);
-  $("#display_name--data").text(json[0]["display_name"]);
-  $("#bio_description--data").text(json[0]["bio_description"]);
-  $("#video_count--data").text(json[0]["video_count"]);
-  $("#profile_deep_link--data").text(json[0]["profile_deep_link"]);
-  $("#is_verified--data").text(json[0]["is_verified"]);
-  $("#follower_count--data").text(json[0]["follower_count"]);
-  $("#likes_count--data").text(json[0]["likes_count"]);
-  $("#following_count--data").text(json[0]["following_count"]);
+  $("#open_id--data").text(json[0][0]["open_id"]);
+  $("#union_id--data").text(json[0][0]["union_id"]);
+  $("#avatar_url--data").text(json[0][0]["avatar_url"]);
+  $("#avatar_url100--data").text(json[0][0]["avatar_url100"]);
+  $("#avatar_large_url--data").text(json[0][0]["avatar_large_url"]);
+  $("#display_name--data").text(json[0][0]["display_name"]);
+  $("#bio_description--data").text(json[0][0]["bio_description"]);
+  $("#video_count--data").text(json[0][0]["video_count"]);
+  $("#profile_deep_link--data").text(json[0][0]["profile_deep_link"]);
+  $("#is_verified--data").text(json[0][0]["is_verified"]);
+  $("#follower_count--data").text(json[0][0]["follower_count"]);
+  $("#likes_count--data").text(json[0][0]["likes_count"]);
+  $("#following_count--data").text(json[0][0]["following_count"]);
 };
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
