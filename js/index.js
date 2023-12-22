@@ -105,10 +105,10 @@ $(document).ready(function () {
   $("#queryUser__boton--buscar").on("click", () => {
     fieldsSelected = getFieldsClass(".fieldUser__checkbox");
     let UserData = fetch(`http://localhost:3000/display/user/?fields=${fieldsSelected.join(",")}&token=${localStorage.getItem('access_token')}`)
-      
-    //UserData.json().then((j) => renderUserData(res.json(j)));
-    .then((res) => res.json())
-    .then(data => renderUserData(data));
+
+      //UserData.json().then((j) => renderUserData(res.json(j)));
+      .then((res) => res.json())
+      .then(data => renderUserData(data));
 
   });
 
@@ -227,9 +227,9 @@ $(document).ready(function () {
       options,
       queryVideosResponse
     )
-    //videoData.then((res) => renderVideoData(res));
-    .then((res) => res.json())
-    .then(data => renderVideoData(data));
+      //videoData.then((res) => renderVideoData(res));
+      .then((res) => res.json())
+      .then(data => renderVideoData(data));
   });
 
   $("#listVideos__input").on("input", () => {
@@ -290,19 +290,71 @@ $(document).ready(function () {
 });
 
 const renderUserData = (json) => {
-  $("#open_id--data").text(json['data']['user']["open_id"]);
-  $("#union_id--data").text(json['data']['user']["union_id"]);
-  $("#avatar_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url"]}"><img src="${json['data']['user']["avatar_url"]}"></a>`);
-  $("#avatar_url100--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url_100"]}"><img src="${json['data']['user']["avatar_url_100"]}"></a>`);
-  $("#avatar_large_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_large_url"]}"><img src="${json['data']['user']["avatar_large_url"]}"></a>` );
-  $("#display_name--data").text(json['data']['user']["display_name"]);
-  $("#bio_description--data").text(json['data']['user']["bio_description"]);
-  $("#video_count--data").text(json['data']['user']["video_count"]);
-  $("#profile_deep_link--data").append(`<a target="_blank" href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}</a>`);
-  $("#is_verified--data").text(json['data']['user']["is_verified"]);
-  $("#follower_count--data").text(json['data']['user']["follower_count"]);
-  $("#likes_count--data").text(json['data']['user']["likes_count"]);
-  $("#following_count--data").text(json['data']['user']["following_count"]);
+  if (json['data']['user'] != null) {
+    $("#open_id--data").text(json['data']['user']["open_id"]);
+  } else {
+    $("#open_id--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#union_id--data").text(json['data']['user']["union_id"]);
+  } else {
+    $("#union_id--data").text('');
+  }
+  if (json['data']['user']["avatar_url"] != null) {
+    $("#avatar_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url"]}"><img src="${json['data']['user']["avatar_url"]}"></a>`);
+  } else {
+    $("#avatar_url--data").text('');
+  }
+  if (json['data']['user']["avatar_url_100"] != null) {
+    $("#avatar_url100--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url_100"]}"><img src="${json['data']['user']["avatar_url_100"]}"></a>`);
+  } else {
+    $("#avatar_url100--data").text('');
+  }
+  if (json['data']['user']["avatar_large_url"] != null) {
+    $("#avatar_large_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_large_url"]}"><img src="${json['data']['user']["avatar_large_url"]}"></a>`);
+  } else {
+    $("#avatar_large_url--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#display_name--data").text(json['data']['user']["display_name"]);
+  } else {
+    $("#display_name--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#bio_description--data").text(json['data']['user']["bio_description"]);
+  } else {
+    $("#bio_description--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#video_count--data").text(json['data']['user']["video_count"]);
+  } else {
+    $("#video_count--data").text('');
+  }
+  if (json['data']['user']["profile_deep_link"] != null) {
+    $("#profile_deep_link--data").append(`<a target="_blank" href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}</a>`);
+  } else {
+    $("#profile_deep_link--d").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#is_verified--data").text(json['data']['user']["is_verified"]);
+  } else {
+    $("#is_verified--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#follower_count--data").text(json['data']['user']["follower_count"]);
+  } else {
+    $("#follower_count--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#likes_count--data").text(json['data']['user']["likes_count"]);
+  } else {
+    $("#likes_count--data").text('');
+  }
+  if (json['data']['user'] != null) {
+    $("#following_count--data").text(json['data']['user']["following_count"]);
+  } else {
+    $("#following_count--data").text('');
+  }
 };
 
 const renderVideoData = (json) => {
@@ -310,10 +362,10 @@ const renderVideoData = (json) => {
   tablaVideos.html('');
   for (const video of json.data.videos) {
     for (const campo in video) {
-      tablaVideos.append('<b>'+campo+'</b>: '+video[campo]+'<br>')
+      tablaVideos.append('<b>' + campo + '</b>: ' + video[campo] + '<br>')
     }
-  tablaVideos.append('<hr>')
-    
+    tablaVideos.append('<hr>')
+
   }
   /*
   var primera = true;
