@@ -308,7 +308,12 @@ const renderUserData = (json) => {
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
   tablaVideos.children().remove();
-  $("#contenido__api--tablaVideos").append(json.data.videos)
+  for (const video of json.data.videos) {
+    for (const campo in video) {
+      console.log(campo)
+    }
+  }
+  $("#contenido__api--tablaVideos").append()
   /*
   var primera = true;
 
