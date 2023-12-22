@@ -23,20 +23,36 @@ router.get("/user", async function (req, res, next) {
 });
 
 router.get("/video", async function (req, res, next) {
-  let token = "Bearer " + req.query.token;
-  let fields = req.query.fields;
+  const {
+    fields,
+    token,
+    start_date,
+    end_date,
+    max_count,
+    cursor,
+    search_id,
+    is_random,
+    query,
+  } = req.query;
+
   let videoIds = req.query.videoIds;
   let url = "https://open.tiktokapis.com/v2/research/video/query/";
 
   url += "?fields=" + fields.toString();
-  let body = {};
-  if (videoIds != null) {
-    body = { filters: { video_ids: [videoIds] } };
-  }
+  let body = {
+    start_date,
+    end_date,
+    max_count,
+    cursor,
+    search_id,
+    is_random,
+    query,
+  };
+
   let test = await fetch(url, {
     method: "POST",
     headers: {
-      Authorization: token,
+      Authorization: "Bearer " + token,
       "Content-Type": "application/json",
     },
     body,

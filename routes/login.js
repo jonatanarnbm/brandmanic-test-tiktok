@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
 
   // the following params need to be in `application/x-www-form-urlencoded` format.
   url += "?client_key=awd1rxq3fwcdtf2s";
-  url += "&scope=user.info.basic";
+  url += "&scope=user.info.basic,user.info.profile,user.info.stats,video.list";
   url += "&response_type=code";
   url += "&redirect_uri=https://marvelcrowd.netlify.app/dashboard";
   url += "&state=" + csrfState;

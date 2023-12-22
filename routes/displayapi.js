@@ -25,15 +25,16 @@ router.get("/video", async function (req, res, next) {
   url += "?fields=" + fields.toString();
   let body = {};
   if (videoIds != null) {
-    body = { filters: { video_ids: [videoIds] } };
+    body = { filters: { video_ids: ["7077642457847991554"] } };
   }
+  console.log(body);
   let test = await fetch(url, {
     method: "POST",
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
     },
-    body,
+    body: JSON.stringify(body),
   });
 
   test.json().then((j) => res.json(j));
