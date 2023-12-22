@@ -310,8 +310,10 @@ const renderVideoData = (json) => {
   tablaVideos.children().remove();
   for (const video of json.data.videos) {
     for (const campo in video) {
-      console.log(campo+': '+video[campo])
+      $("#contenido__api--tablaVideos").append(campo+': '+video[campo])
     }
+  $("#contenido__api--tablaVideos").append('<hr>')
+    
   }
   $("#contenido__api--tablaVideos").append()
   /*
