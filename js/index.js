@@ -304,10 +304,12 @@ const renderUserData = (json) => {
   $("#likes_count--data").text(json['data']['user']["likes_count"]);
   $("#following_count--data").text(json['data']['user']["following_count"]);
 };
+
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
   tablaVideos.children().remove();
-
+  $("#contenido__api--tablaVideos").append(json.data.videos)
+  /*
   var primera = true;
 
   for (const video of json.data.videos) {
@@ -330,7 +332,7 @@ const renderVideoData = (json) => {
         `<td style="max-width: 5rem;border: 1px solid black;padding: .5rem;overflow:hidden;line-break: anywhere;">${video[campo]}</td>`
       );
     }
-  }
+  }*/
 };
 
 const renderAdData = (json) => {
