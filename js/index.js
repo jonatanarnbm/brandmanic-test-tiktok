@@ -218,6 +218,7 @@ $(document).ready(function () {
   var cursorValue = 0;
   $("#listVideos__boton--buscar").on("click", () => {
     cursorValue = $("#listVideos__input--cursor").val();
+    fieldsSelected = getFieldsClass(".fieldVideo__checkbox");
 
     //alert("Videos: " + maxVideos + ". Cursor: " + cursorValue);
 
