@@ -299,7 +299,7 @@ const renderUserData = (json) => {
   $("#display_name--data").text(json['data']['user']["display_name"]);
   $("#bio_description--data").text(json['data']['user']["bio_description"]);
   $("#video_count--data").text(json['data']['user']["video_count"]);
-  $("#profile_deep_link--data").append(`<a target="_blank" href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}"</a>`);
+  $("#profile_deep_link--data").append(`<a target="_blank" href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}</a>`);
   $("#is_verified--data").text(json['data']['user']["is_verified"]);
   $("#follower_count--data").text(json['data']['user']["follower_count"]);
   $("#likes_count--data").text(json['data']['user']["likes_count"]);
