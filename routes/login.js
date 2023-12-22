@@ -40,7 +40,7 @@ router.get("/token", async function (req, res, next) {
 router.get("/test", async function (req, res, next) {
   let token = "Bearer " + req.query.token;
   let test = await fetch(
-    "https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url",
+    "https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url,avatar_url_100,avatar_large_url,display_name",
     {
       headers: {
         Authorization: token,
