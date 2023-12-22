@@ -145,9 +145,7 @@ $(document).ready(function () {
     alert("Videos: " + videosIDS);
 
     let videoData = fetchData(
-      `https://open.tiktokapis.com/v2/video/query/?fields=${fieldsSelected.join(
-        ","
-      )}`,
+      `http://localhost:3000/display/video?fields=${fieldsSelected.join(",")}&videoIds=${fieldsSelected.join(",")}&token=${localStorage.getItem('access_token')}`,
       options,
       queryVideosResponse
     );
@@ -221,12 +219,10 @@ $(document).ready(function () {
   $("#listVideos__boton--buscar").on("click", () => {
     cursorValue = $("#listVideos__input--cursor").val();
 
-    alert("Videos: " + maxVideos + ". Cursor: " + cursorValue);
+    //alert("Videos: " + maxVideos + ". Cursor: " + cursorValue);
 
     let videoData = fetchData(
-      `https://open.tiktokapis.com/v2/video/list/?fields=${fieldsSelected.join(
-        ","
-      )}`,
+      `http://localhost:3000/display/video/list?fields=${fieldsSelected.join(",")}&cursor=${cursorValue}&max_count=${maxVideos}&token=${localStorage.getItem('access_token')}`,
       options,
       queryVideosResponse
     );
