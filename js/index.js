@@ -293,67 +293,67 @@ const renderUserData = (json) => {
   if (json['data']['user'] != null) {
     $("#open_id--data").text(json['data']['user']["open_id"]);
   } else {
-    $("#open_id--data").text('');
+    $("#open_id--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#union_id--data").text(json['data']['user']["union_id"]);
   } else {
-    $("#union_id--data").text('');
+    $("#union_id--data").html('');
   }
   if (json['data']['user']["avatar_url"] != null) {
     $("#avatar_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url"]}"><img src="${json['data']['user']["avatar_url"]}"></a>`);
   } else {
-    $("#avatar_url--data").text('');
+    $("#avatar_url--data").html('');
   }
   if (json['data']['user']["avatar_url_100"] != null) {
     $("#avatar_url100--data").append(`<a target="_blank" href="${json['data']['user']["avatar_url_100"]}"><img src="${json['data']['user']["avatar_url_100"]}"></a>`);
   } else {
-    $("#avatar_url100--data").text('');
+    $("#avatar_url100--data").html('');
   }
   if (json['data']['user']["avatar_large_url"] != null) {
     $("#avatar_large_url--data").append(`<a target="_blank" href="${json['data']['user']["avatar_large_url"]}"><img src="${json['data']['user']["avatar_large_url"]}"></a>`);
   } else {
-    $("#avatar_large_url--data").text('');
+    $("#avatar_large_url--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#display_name--data").text(json['data']['user']["display_name"]);
   } else {
-    $("#display_name--data").text('');
+    $("#display_name--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#bio_description--data").text(json['data']['user']["bio_description"]);
   } else {
-    $("#bio_description--data").text('');
+    $("#bio_description--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#video_count--data").text(json['data']['user']["video_count"]);
   } else {
-    $("#video_count--data").text('');
+    $("#video_count--data").html('');
   }
   if (json['data']['user']["profile_deep_link"] != null) {
     $("#profile_deep_link--data").append(`<a target="_blank" href="${json['data']['user']["profile_deep_link"]}">${json['data']['user']["profile_deep_link"]}</a>`);
   } else {
-    $("#profile_deep_link--d").text('');
+    $("#profile_deep_link--d").html('');
   }
   if (json['data']['user'] != null) {
     $("#is_verified--data").text(json['data']['user']["is_verified"]);
   } else {
-    $("#is_verified--data").text('');
+    $("#is_verified--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#follower_count--data").text(json['data']['user']["follower_count"]);
   } else {
-    $("#follower_count--data").text('');
+    $("#follower_count--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#likes_count--data").text(json['data']['user']["likes_count"]);
   } else {
-    $("#likes_count--data").text('');
+    $("#likes_count--data").html('');
   }
   if (json['data']['user'] != null) {
     $("#following_count--data").text(json['data']['user']["following_count"]);
   } else {
-    $("#following_count--data").text('');
+    $("#following_count--data").html('');
   }
 };
 
