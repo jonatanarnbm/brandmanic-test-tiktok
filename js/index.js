@@ -308,15 +308,13 @@ const renderUserData = (json) => {
 const renderVideoData = (json) => {
   let tablaVideos = $("#contenido__api--tablaVideos");
   tablaVideos.children().remove();
-  $("#contenido__api--tablaVideos").children().remove();
   for (const video of json.data.videos) {
     for (const campo in video) {
-      $("#contenido__api--tablaVideos").append('<b>'+campo+'</b>: '+video[campo]+'<br>')
+      tablaVideos.append('<b>'+campo+'</b>: '+video[campo]+'<br>')
     }
-  $("#contenido__api--tablaVideos").append('<hr>')
+  tablaVideos.append('<hr>')
     
   }
-  $("#contenido__api--tablaVideos").append()
   /*
   var primera = true;
 
