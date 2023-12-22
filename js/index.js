@@ -222,12 +222,14 @@ $(document).ready(function () {
 
     //alert("Videos: " + maxVideos + ". Cursor: " + cursorValue);
 
-    let videoData = fetchData(
+    let videoData = fetch(
       `http://localhost:3000/display/video/list?fields=${fieldsSelected.join(",")}&cursor=${cursorValue}&max_count=${maxVideos}&token=${localStorage.getItem('access_token')}`,
       options,
       queryVideosResponse
-    );
-    videoData.then((res) => renderVideoData(res));
+    )
+    //videoData.then((res) => renderVideoData(res));
+    .then((res) => res.json())
+    .then(data => renderVideoData(data));
   });
 
   $("#listVideos__input").on("input", () => {
